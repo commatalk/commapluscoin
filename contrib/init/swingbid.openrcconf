@@ -1,0 +1,26 @@
+# /etc/conf.d/commapluscoind: config file for /etc/init.d/commapluscoind
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/commapluscoin/commapluscoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/commapluscoind"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/commapluscoind.pid"
+
+# Where to write commapluscoind data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/commapluscoind"
+
+# User and group to own commapluscoind process
+#BITCOIND_USER="commapluscoin"
+#BITCOIND_GROUP="commapluscoin"
+
+# Path to commapluscoind executable
+#BITCOIND_BIN="/usr/bin/commapluscoind"
+
+# Nice value to run commapluscoind under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

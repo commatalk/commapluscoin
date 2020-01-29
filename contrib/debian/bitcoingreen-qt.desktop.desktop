@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CommaPlusCoin
+Comment=CommaPlusCoin P2P Cryptocurrency
+Exec=commapluscoin-qt %u
+Terminal=false
+Type=Application
+Icon=commapluscoin128
+MimeType=x-scheme-handler/commapluscoin;
+Categories=Office;Finance;
+Name[en_US]=commapluscoin-qt.desktop
