@@ -117,5 +117,5 @@ Other commapluscoinnds:
 -------
 
     ./commapluscoind -daemon # to start the commapluscoin daemon.
-    ./commapluscoin-cli --help  # for a list of commapluscoinnd-line options.
+    ./commapluscoin-cli --help  # for a list of command-line options.
     ./commapluscoin-cli help    # When the daemon is running, to get a list of RPC commapluscoinnds

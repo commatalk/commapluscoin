@@ -75,8 +75,10 @@ void OptionsModel::Init()
 
 
 
-    if (!settings.contains("fShowMasternodesTab"))
-        settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
+//    if (!settings.contains("fShowMasternodesTab"))
+//        settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
+    settings.setValue("fShowMasternodesTab", false);
+
 
     // These are shared with the core or have a commapluscoinnd-line parameter
     // and we want commapluscoinnd-line parameters to overwrite the GUI settings.
@@ -287,10 +289,11 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             }
             break;
         case ShowMasternodesTab:
-            if (settings.value("fShowMasternodesTab") != value) {
-                settings.setValue("fShowMasternodesTab", value);
-                setRestartRequired(true);
-            }
+            settings.setValue("fShowMasternodesTab", false); // linhho add
+//            if (settings.value("fShowMasternodesTab") != value) {
+//                settings.setValue("fShowMasternodesTab", value);
+//                setRestartRequired(true);
+//            }
             break;
 #endif
         case StakeSplitThreshold:

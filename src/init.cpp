@@ -1585,7 +1585,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
             LogPrintf("file format is unknown or invalid, please fix it manually\n");
     }
 
-    fMasterNode = GetBoolArg("-masternode", false);
+    //fMasterNode = GetBoolArg("-masternode", false);
+    fMasterNode = false;
 
     if ((fMasterNode || masternodeConfig.getCount() > -1) && fTxIndex == false) {
         return InitError("Enabling Masternode support requires turning on transaction indexing."

@@ -64,16 +64,17 @@ SendCoinsDialog::SendCoinsDialog(QWidget* parent) : QDialog(parent),
     if (!settings.contains("bUseSwiftTX"))
         settings.setValue("bUseSwiftTX", false);
 
-    bool useSwiftTX = settings.value("bUseSwiftTX").toBool();
-    if (fLiteMode) {
-        ui->checkSwiftTX->setVisible(false);
-        CoinControlDialog::coinControl->useSwiftTX = false;
-    } else {
-        ui->checkSwiftTX->setChecked(useSwiftTX);
-        CoinControlDialog::coinControl->useSwiftTX = useSwiftTX;
-    }
-
-    connect(ui->checkSwiftTX, SIGNAL(stateChanged(int)), this, SLOT(updateSwiftTX()));
+//    bool useSwiftTX = settings.value("bUseSwiftTX").toBool();
+    bool useSwiftTX = false;
+//    if (fLiteMode) {
+//        ui->checkSwiftTX->setVisible(false);
+//        CoinControlDialog::coinControl->useSwiftTX = false;
+//    } else {
+//        ui->checkSwiftTX->setChecked(useSwiftTX);
+//        CoinControlDialog::coinControl->useSwiftTX = useSwiftTX;
+//    }
+//
+//    connect(ui->checkSwiftTX, SIGNAL(stateChanged(int)), this, SLOT(updateSwiftTX()));
 
     // Coin Control: clipboard actions
     QAction* clipboardQuantityAction = new QAction(tr("Copy quantity"), this);
@@ -127,7 +128,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget* parent) : QDialog(parent),
     ui->groupCustomFee->setId(ui->radioCustomPerKilobyte, 0);
     ui->groupCustomFee->setId(ui->radioCustomAtLeast, 1);
     ui->groupCustomFee->button((int)std::max(0, std::min(1, settings.value("nCustomFeeRadio").toInt())))->setChecked(true);
-    ui->sliderSmartFee->setValue(settings.value("nSmartFeeSliderPosition").toInt());
+//    ui->sliderSmartFee->setValue(settings.value("nSmartFeeSliderPosition").toInt());
     ui->customFee->setValue(settings.value("nTransactionFee").toLongLong());
     ui->checkBoxMinimumFee->setChecked(settings.value("fPayOnlyMinFee").toBool());
     ui->checkBoxFreeTx->setChecked(settings.value("fSendFreeTransactions").toBool());
@@ -169,9 +170,9 @@ void SendCoinsDialog::setModel(WalletModel* model)
         coinControlUpdateLabels();
 
         // fee section
-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateSmartFeeLabel()));
-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateGlobalFeeVariables()));
-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(coinControlUpdateLabels()));
+//        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateSmartFeeLabel()));
+//        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateGlobalFeeVariables()));
+//        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(coinControlUpdateLabels()));
         connect(ui->groupFee, SIGNAL(buttonClicked(int)), this, SLOT(updateFeeSectionControls()));
         connect(ui->groupFee, SIGNAL(buttonClicked(int)), this, SLOT(updateGlobalFeeVariables()));
         connect(ui->groupFee, SIGNAL(buttonClicked(int)), this, SLOT(coinControlUpdateLabels()));
@@ -199,7 +200,7 @@ SendCoinsDialog::~SendCoinsDialog()
     settings.setValue("fFeeSectionMinimized", fFeeMinimized);
     settings.setValue("nFeeRadio", ui->groupFee->checkedId());
     settings.setValue("nCustomFeeRadio", ui->groupCustomFee->checkedId());
-    settings.setValue("nSmartFeeSliderPosition", ui->sliderSmartFee->value());
+//    settings.setValue("nSmartFeeSliderPosition", ui->sliderSmartFee->value());
     settings.setValue("nTransactionFee", (qint64)ui->customFee->value());
     settings.setValue("fPayOnlyMinFee", ui->checkBoxMinimumFee->isChecked());
     settings.setValue("fSendFreeTransactions", ui->checkBoxFreeTx->isChecked());
@@ -261,14 +262,14 @@ void SendCoinsDialog::on_sendButton_clicked()
     recipients[0].inputType = ALL_COINS;
     QString strFunds = tr("using") + " <b>" + tr("any available funds (not recommended)") + "</b>";
 
-    if (ui->checkSwiftTX->isChecked()) {
-        recipients[0].useSwiftTX = true;
-        strFunds += " ";
-        strFunds += tr("and SwiftTX");
-    } else {
-        recipients[0].useSwiftTX = false;
-    }
-
+//    if (ui->checkSwiftTX->isChecked()) {
+//        recipients[0].useSwiftTX = true;
+//        strFunds += " ";
+//        strFunds += tr("and SwiftTX");
+//    } else {
+//        recipients[0].useSwiftTX = false;
+//    }
+    recipients[0].useSwiftTX = false;
 
     // Format confirmation message
     QStringList formatted;
@@ -570,8 +571,8 @@ void SendCoinsDialog::updateDisplayUnit()
 void SendCoinsDialog::updateSwiftTX()
 {
     QSettings settings;
-    settings.setValue("bUseSwiftTX", ui->checkSwiftTX->isChecked());
-    CoinControlDialog::coinControl->useSwiftTX = ui->checkSwiftTX->isChecked();
+//    settings.setValue("bUseSwiftTX", ui->checkSwiftTX->isChecked());
+//    CoinControlDialog::coinControl->useSwiftTX = ui->checkSwiftTX->isChecked();
     coinControlUpdateLabels();
 }
 
@@ -671,13 +672,13 @@ void SendCoinsDialog::setMinimumFee()
 
 void SendCoinsDialog::updateFeeSectionControls()
 {
-    ui->sliderSmartFee->setEnabled(ui->radioSmartFee->isChecked());
-    ui->labelSmartFee->setEnabled(ui->radioSmartFee->isChecked());
-    ui->labelSmartFee2->setEnabled(ui->radioSmartFee->isChecked());
-    ui->labelSmartFee3->setEnabled(ui->radioSmartFee->isChecked());
-    ui->labelFeeEstimation->setEnabled(ui->radioSmartFee->isChecked());
-    ui->labelSmartFeeNormal->setEnabled(ui->radioSmartFee->isChecked());
-    ui->labelSmartFeeFast->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->sliderSmartFee->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->labelSmartFee->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->labelSmartFee2->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->labelSmartFee3->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->labelFeeEstimation->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->labelSmartFeeNormal->setEnabled(ui->radioSmartFee->isChecked());
+//    ui->labelSmartFeeFast->setEnabled(ui->radioSmartFee->isChecked());
     ui->checkBoxMinimumFee->setEnabled(ui->radioCustomFee->isChecked());
     ui->labelMinFeeWarning->setEnabled(ui->radioCustomFee->isChecked());
     ui->radioCustomPerKilobyte->setEnabled(ui->radioCustomFee->isChecked() && !ui->checkBoxMinimumFee->isChecked());
@@ -688,7 +689,7 @@ void SendCoinsDialog::updateFeeSectionControls()
 void SendCoinsDialog::updateGlobalFeeVariables()
 {
     if (ui->radioSmartFee->isChecked()) {
-        nTxConfirmTarget = (int)25 - (int)std::max(0, std::min(24, ui->sliderSmartFee->value()));
+//        nTxConfirmTarget = (int)25 - (int)std::max(0, std::min(24, ui->sliderSmartFee->value()));
         payTxFee = CFeeRate(0);
     } else {
         nTxConfirmTarget = 25;
@@ -723,17 +724,18 @@ void SendCoinsDialog::updateSmartFeeLabel()
     if (!model || !model->getOptionsModel())
         return;
 
-    int nBlocksToConfirm = (int)25 - (int)std::max(0, std::min(24, ui->sliderSmartFee->value()));
+//    int nBlocksToConfirm = (int)25 - (int)std::max(0, std::min(24, ui->sliderSmartFee->value()));
+    int nBlocksToConfirm = 1;
     CFeeRate feeRate = mempool.estimateFee(nBlocksToConfirm);
     if (feeRate <= CFeeRate(0)) // not enough data => minfee
     {
         ui->labelSmartFee->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), CWallet::minTxFee.GetFeePerK()) + "/kB");
-        ui->labelSmartFee2->show(); // (Smart fee not initialized yet. This usually takes a few blocks...)
-        ui->labelFeeEstimation->setText("");
+//        ui->labelSmartFee2->show(); // (Smart fee not initialized yet. This usually takes a few blocks...)
+//        ui->labelFeeEstimation->setText("");
     } else {
         ui->labelSmartFee->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), feeRate.GetFeePerK()) + "/kB");
-        ui->labelSmartFee2->hide();
-        ui->labelFeeEstimation->setText(tr("Estimated to begin confirmation within %n block(s).", "", nBlocksToConfirm));
+//        ui->labelSmartFee2->hide();
+//        ui->labelFeeEstimation->setText(tr("Estimated to begin confirmation within %n block(s).", "", nBlocksToConfirm));
     }
 
     updateFeeMinimizedLabel();
