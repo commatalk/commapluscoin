@@ -3,9 +3,8 @@ COMMAPLUSCOIN Core integration/staging repository
 
 COMMAPLUSCOIN CHAIN is an online messenger platform for all participants, and it will evolve and develop through mutual interaction. Content providers develop together by providing more revenue and opportunity environments, providing content consumers and users with different benefits and new revenue structures, and inducing more participation. We hope to build a new messenger platform ecosystem that can grow together.
 - Dual System : operating a separate variable coin platform and fixed token platform
-- Masternode : If binding the CM Coin minimum quantity (for example, 100,000 pieces) to the wallet and map it with the master node server, mining coins will be put out continuously in the wallet
 
-More information at [commapluscoincoin.io](https://commapluscoincoin.io) 
+More information at [commaplus.jp](http://commaplus.jp) 
 
 ### Coin Specs
 <table>
