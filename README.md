@@ -12,28 +12,24 @@ More information at [commapluscoincoin.io](https://commapluscoincoin.io)
 <tr><td>Algo</td><td>Quark</td></tr>
 <tr><td>Block Time</td><td>60 Seconds</td></tr>
 <tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
-<tr><td>Max Coin Supply (PoW Phase)</td><td>4,349,999,600 CPC</td></tr>
-<tr><td>Max Coin Supply (PoS Phase)</td><td>3,149,999,955 CPC</td></tr>
-<tr><td>Premine</td><td>4,349,999,600 CPC*</td></tr>
+<tr><td>Max Coin Supply (PoW Phase)</td><td>2,897,600,000 CPC</td></tr>
+<tr><td>Max Coin Supply (PoS Phase)</td><td>2,102,368,800 CPC</td></tr>
+<tr><td>Premine</td><td>2,897,600,000 CPC*</td></tr>
 </table>
 
-* 4,349,999,600 CPC Premine / Masternode stake amount = 100,000 CPC
+* 2,897,600,000 CPC Premine
 
 ### PoW Rewards Breakdown
 
 <table>
-<th>Block Height</th><th>Masternodes</th><th>Miner</th><th>Budget</th>
-<tr><td>1-200</td><td>0</td><td>100% (4,349,999,600 CPC)</td><td>N/A</td></tr>
+<th>Block Height</th><th>Miner</th>
+<tr><td>1-200</td><td>0</td><td>2,897,600,000 CPC</td></tr>
 </table>
 
 ### PoS Rewards Breakdown
 
 <table>
-<th>Phase</th><th>Block Height</th><th>Masternode</th><th>POS</th><th>TotalReward</th>
-<tr><td>Phase 1</td><td>201-21601</td><td>0.8CPC</td><td>0.2CPC</td><td>21400CPC</td></tr>
-<tr><td>Phase 2</td><td>21602-547202</td><td>960CPC</td><td>240CPC</td><td>630,720,000CPC</td></tr>
-<tr><td>Phase 3</td><td>547203-1598403</td><td>480CPC</td><td>120CPC</td><td>630,720,000CPC</td></tr>
-<tr><td>Phase 4</td><td>1598404-3700804</td><td>240CPC</td><td>60CPC</td><td>630,720,000CPC</td></tr>
-<tr><td>Phase 5</td><td>3700805-7905605</td><td>116CPC</td><td>29CPC</td><td>609,696,000CPC</td></tr>
-<tr><td>Phase 6</td><td>7905606-20868066</td><td>40CPC</td><td>10CPC</td><td>648,123,000CPC</td></tr>
+<th>Block Height</th><th>POS</th><th>TotalReward</th>
+<tr><td>201-10512044</td><td>200</td><td>2,102,368,800 CPC</td></tr>
+
 </table>
