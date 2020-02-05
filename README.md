@@ -21,14 +21,14 @@ More information at [commaplus.jp](http://commaplus.jp)
 ### PoW Rewards Breakdown
 
 <table>
-<th>Block Height</th><th>Miner</th>
+<th>Block Height</th><th>Miner</th><th>Total Reward</td>
 <tr><td>1-200</td><td>0</td><td>2,897,600,000 CPC</td></tr>
 </table>
 
 ### PoS Rewards Breakdown
 
 <table>
-<th>Block Height</th><th>POS</th><th>TotalReward</th>
+<th>Block Height</th><th>POS</th><th>Total Reward</th>
 <tr><td>201-10512044</td><td>200</td><td>2,102,368,800 CPC</td></tr>
 
 </table>
