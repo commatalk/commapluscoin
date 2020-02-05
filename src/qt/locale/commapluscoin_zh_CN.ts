@@ -566,7 +566,7 @@
         <translation>打开&amp;URI</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;命令行选项</translation>
     </message>
     <message>
@@ -674,7 +674,7 @@
         <translation>区块浏览窗口</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>显示CommaPlusCoin Core帮助信息以获取可能的CommaPlusCoin命令行选项的列表</translation>
     </message>
     <message>
@@ -971,7 +971,7 @@ Address: %4
         <translation>第三方交易URLs</translation>
     </message>
     <message>
-        <source>Active commapluscoinnd-line options that override above options:</source>
+        <source>Active command-line options that override above options:</source>
         <translation>上述选项的主动命令行选项：</translation>
     </message>
     <message>
@@ -1471,7 +1471,7 @@ Address: %4
 <context>
     <name>commapluscoin-core</name>
     <message>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
         <translation>在收到相关警报时执行命令，或者看到一个很长的分叉（cmd中的%s被消息替换）</translation>
     </message>
     <message>

@@ -562,7 +562,7 @@
         <translation>Open &amp;URI...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;Opdrachtregelopties</translation>
     </message>
     <message>
@@ -1076,16 +1076,16 @@ MultiSend: %1</translation>
         <translation>Over CommaPlusCoin Core</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
-        <translation>CommaPlusCoinnd-line opties</translation>
+        <source>Command-line options</source>
+        <translation>Command-line opties</translation>
     </message>
     <message>
         <source>Usage:</source>
         <translation>Gebruik:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
-        <translation>commapluscoinnd-line opties</translation>
+        <source>command-line options</source>
+        <translation>command-line opties</translation>
     </message>
     <message>
         <source>UI Options:</source>

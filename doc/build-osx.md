@@ -7,7 +7,7 @@ Notes
 
 * Tested on OS X 10.7 through 10.10 on 64-bit Intel processors only.
 
-* All of the commapluscoinnds should be executed in a Terminal application. The
+* All of the commands should be executed in a Terminal application. The
 built-in one is located in `/Applications/Utilities`.
 
 Preparation
@@ -17,7 +17,7 @@ You need to install XCode with all the options checked so that the compiler
 and everything is available in /usr not just /Developer. XCode should be
 available on your OS X installation media, but if not, you can get the
 current version from https://developer.apple.com/xcode/. If you install
-Xcode 4.3 or later, you'll need to install its commapluscoinnd line tools. This can
+Xcode 4.3 or later, you'll need to install its command line tools. This can
 be done in `Xcode > Preferences > Downloads > Components` and generally must
 be re-done or updated every time Xcode is updated.
 
@@ -102,7 +102,7 @@ It's now available at `./commapluscoind`, provided that you are still in the `sr
 directory. We have to first create the RPC configuration file, though.
 
 Run `./commapluscoind` to get the filename where it should be put, or just try these
-commapluscoinnds:
+commands:
 
     echo -e "rpcuser=commapluscoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/CommaPlusCoin/commapluscoin.conf"
     chmod 600 "/Users/${USER}/Library/Application Support/CommaPlusCoin/commapluscoin.conf"
@@ -113,9 +113,9 @@ you can monitor its process by looking at the debug.log file, like this:
 
     tail -f $HOME/Library/Application\ Support/CommaPlusCoin/debug.log
 
-Other commapluscoinnds:
+Other commands:
 -------
 
     ./commapluscoind -daemon # to start the commapluscoin daemon.
     ./commapluscoin-cli --help  # for a list of command-line options.
-    ./commapluscoin-cli help    # When the daemon is running, to get a list of RPC commapluscoinnds
+    ./commapluscoin-cli help    # When the daemon is running, to get a list of RPC commands

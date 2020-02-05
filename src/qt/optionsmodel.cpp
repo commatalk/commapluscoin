@@ -37,7 +37,7 @@ OptionsModel::OptionsModel(QObject* parent) : QAbstractListModel(parent)
 
 void OptionsModel::addOverriddenOption(const std::string& option)
 {
-    strOverriddenByCommaPlusCoinndLine += QString::fromStdString(option) + "=" + QString::fromStdString(mapArgs[option]) + " ";
+    strOverriddenByCommandLine += QString::fromStdString(option) + "=" + QString::fromStdString(mapArgs[option]) + " ";
 }
 
 // Writes all missing QSettings with their default values
@@ -80,13 +80,13 @@ void OptionsModel::Init()
     settings.setValue("fShowMasternodesTab", false);
 
 
-    // These are shared with the core or have a commapluscoinnd-line parameter
-    // and we want commapluscoinnd-line parameters to overwrite the GUI settings.
+    // These are shared with the core or have a command-line parameter
+    // and we want command-line parameters to overwrite the GUI settings.
     //
     // If setting doesn't exist create it with defaults.
     //
     // If SoftSetArg() or SoftSetBoolArg() return false we were overridden
-    // by commapluscoinnd-line and show this in the UI.
+    // by command-line and show this in the UI.
 
     // Main
     if (!settings.contains("nDatabaseCache"))

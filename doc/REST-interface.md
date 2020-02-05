@@ -20,7 +20,7 @@ The HTTP request and response are both handled entirely in-memory, thus making m
 
 With the /notxdetails/ option JSON response will only contain the transaction hash instead of the complete transaction details. The option only affects the JSON response.
 
-For full TX query capability, one must enable the transaction index via "txindex=1" commapluscoinnd line / configuration option.
+For full TX query capability, one must enable the transaction index via "txindex=1" command line / configuration option.
 
 Risks
 -------------

@@ -63,7 +63,7 @@ For Ubuntu 12.04 and later or Debian 7 and later libboost-all-dev has to be inst
 	sudo apt-get install libboost-all-dev
 
  db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
- You can add the repository using the following commapluscoinnd:
+ You can add the repository using the following command:
 
         sudo add-apt-repository ppa:bitcoin/bitcoin
         sudo apt-get update

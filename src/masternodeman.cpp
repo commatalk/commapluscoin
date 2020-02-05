@@ -718,14 +718,14 @@ void CMasternodeMan::ProcessMasternodeConnections()
     }
 }
 
-void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinnd, CDataStream& vRecv)
+void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if (fLiteMode) return; //disable all Masternode related functionality
     if (!masternodeSync.IsBlockchainSynced()) return;
 
     LOCK(cs_process_message);
 
-    if (strCommaPlusCoinnd == "mnb") { //Masternode Broadcast
+    if (strCommand == "mnb") { //Masternode Broadcast
         CMasternodeBroadcast mnb;
         vRecv >> mnb;
 
@@ -765,7 +765,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
         }
     }
 
-    else if (strCommaPlusCoinnd == "mnp") { //Masternode Ping
+    else if (strCommand == "mnp") { //Masternode Ping
         CMasternodePing mnp;
         vRecv >> mnp;
 
@@ -791,7 +791,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
         // we might have to ask for a masternode entry once
         AskForMN(pfrom, mnp.vin);
 
-    } else if (strCommaPlusCoinnd == "dseg") { //Get Masternode list or specific entry
+    } else if (strCommand == "dseg") { //Get Masternode list or specific entry
 
         CTxIn vin;
         vRecv >> vin;

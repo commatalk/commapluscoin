@@ -889,7 +889,7 @@ background:#fff;
 
 /**************************** HELP MENU *************************************************/
 
-/* CommaPlusCoinnd Line Options Dialog */
+/* Command Line Options Dialog */
 QDialog#HelpMessageDialog QScrollArea * {
 background-color:#fff;
 }

@@ -49,22 +49,22 @@ void budgetToJSON(CBudgetProposal* pbudgetProposal, UniValue& bObj)
     bObj.push_back(Pair("fValid", pbudgetProposal->fValid));
 }
 
-// This commapluscoinnd is retained for backwards compatibility, but is deprecated.
-// Future removal of this commapluscoinnd is planned to keep things clean.
+// This command is retained for backwards compatibility, but is deprecated.
+// Future removal of this command is planned to keep things clean.
 UniValue mnbudget(const UniValue& params, bool fHelp)
 {
-    string strCommaPlusCoinnd;
+    string strCommand;
     if (params.size() >= 1)
-        strCommaPlusCoinnd = params[0].get_str();
+        strCommand = params[0].get_str();
 
     if (fHelp ||
-        (strCommaPlusCoinnd != "vote-alias" && strCommaPlusCoinnd != "vote-many" && strCommaPlusCoinnd != "prepare" && strCommaPlusCoinnd != "submit" && strCommaPlusCoinnd != "vote" && strCommaPlusCoinnd != "getvotes" && strCommaPlusCoinnd != "getinfo" && strCommaPlusCoinnd != "show" && strCommaPlusCoinnd != "projection" && strCommaPlusCoinnd != "check" && strCommaPlusCoinnd != "nextblock"))
+        (strCommand != "vote-alias" && strCommand != "vote-many" && strCommand != "prepare" && strCommand != "submit" && strCommand != "vote" && strCommand != "getvotes" && strCommand != "getinfo" && strCommand != "show" && strCommand != "projection" && strCommand != "check" && strCommand != "nextblock"))
         throw runtime_error(
-            "mnbudget \"commapluscoinnd\"... ( \"passphrase\" )\n"
+            "mnbudget \"command\"... ( \"passphrase\" )\n"
             "\nVote or show current budgets\n"
-            "This commapluscoinnd is deprecated, please see individual commapluscoinnd documentation for future reference\n\n"
+            "This command is deprecated, please see individual command documentation for future reference\n\n"
 
-            "\nAvailable commapluscoinnds:\n"
+            "\nAvailable commands:\n"
             "  prepare            - Prepare proposal for network by signing and creating tx\n"
             "  submit             - Submit proposal for network\n"
             "  vote-many          - Vote on a CommaPlusCoin initiative\n"
@@ -77,72 +77,72 @@ UniValue mnbudget(const UniValue& params, bool fHelp)
             "  check              - Scan proposals and remove invalid\n"
             "  nextblock          - Get next superblock for budget system\n");
 
-    if (strCommaPlusCoinnd == "nextblock") {
+    if (strCommand == "nextblock") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getnextsuperblock(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "prepare") {
+    if (strCommand == "prepare") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return preparebudget(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "submit") {
+    if (strCommand == "submit") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return submitbudget(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "vote" || strCommaPlusCoinnd == "vote-many" || strCommaPlusCoinnd == "vote-alias") {
-        if (strCommaPlusCoinnd == "vote-alias")
+    if (strCommand == "vote" || strCommand == "vote-many" || strCommand == "vote-alias") {
+        if (strCommand == "vote-alias")
             throw runtime_error(
-                "vote-alias is not supported with this commapluscoinnd\n"
+                "vote-alias is not supported with this command\n"
                 "Please use mnbudgetvote instead.\n"
             );
         return mnbudgetvote(params, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "projection") {
+    if (strCommand == "projection") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getbudgetprojection(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "show" || strCommaPlusCoinnd == "getinfo") {
+    if (strCommand == "show" || strCommand == "getinfo") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getbudgetinfo(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "getvotes") {
+    if (strCommand == "getvotes") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getbudgetvotes(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "check") {
+    if (strCommand == "check") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
@@ -262,7 +262,7 @@ UniValue submitbudget(const UniValue& params, bool fHelp)
             "4. block-start:      (numeric, required) Starting super block height\n"
             "5. \"CPC-address\":   (string, required) CPC address to send payments to\n"
             "6. monthly-payment:  (numeric, required) Monthly payment amount\n"
-            "7. \"fee-tx\":         (string, required) Transaction hash from preparebudget commapluscoinnd\n"
+            "7. \"fee-tx\":         (string, required) Transaction hash from preparebudget command\n"
 
             "\nResult:\n"
             "\"xxxx\"       (string) proposal hash (if successful) or error message (if failed)\n"
@@ -270,7 +270,7 @@ UniValue submitbudget(const UniValue& params, bool fHelp)
             HelpExampleCli("submitbudget", "\"test-proposal\" \"https://savebitcoin.io/t/test-proposal\" 2 820800 \"D9oc6C3dttUbv8zd7zGNq1qKBGf4ZQ1XEE\" 500") +
             HelpExampleRpc("submitbudget", "\"test-proposal\" \"https://savebitcoin.io/t/test-proposal\" 2 820800 \"D9oc6C3dttUbv8zd7zGNq1qKBGf4ZQ1XEE\" 500"));
 
-    // Check these inputs the same way we check the vote commapluscoinnds:
+    // Check these inputs the same way we check the vote commands:
     // **********************************************************
 
     std::string strProposalName = SanitizeString(params[0].get_str());
@@ -338,17 +338,17 @@ UniValue submitbudget(const UniValue& params, bool fHelp)
 
 UniValue mnbudgetvote(const UniValue& params, bool fHelp)
 {
-    std::string strCommaPlusCoinnd;
+    std::string strCommand;
     if (params.size() >= 1) {
-        strCommaPlusCoinnd = params[0].get_str();
+        strCommand = params[0].get_str();
 
-        // Backwards compatibility with legacy `mnbudget` commapluscoinnd
-        if (strCommaPlusCoinnd == "vote") strCommaPlusCoinnd = "local";
-        if (strCommaPlusCoinnd == "vote-many") strCommaPlusCoinnd = "many";
-        if (strCommaPlusCoinnd == "vote-alias") strCommaPlusCoinnd = "alias";
+        // Backwards compatibility with legacy `mnbudget` command
+        if (strCommand == "vote") strCommand = "local";
+        if (strCommand == "vote-many") strCommand = "many";
+        if (strCommand == "vote-alias") strCommand = "alias";
     }
 
-    if (fHelp || (params.size() == 3 && (strCommaPlusCoinnd != "local" && strCommaPlusCoinnd != "many")) || (params.size() == 4 && strCommaPlusCoinnd != "alias") ||
+    if (fHelp || (params.size() == 3 && (strCommand != "local" && strCommand != "many")) || (params.size() == 4 && strCommand != "alias") ||
         params.size() > 4 || params.size() < 3)
         throw runtime_error(
             "mnbudgetvote \"local|many|alias\" \"votehash\" \"yes|no\" ( \"alias\" )\n"
@@ -390,7 +390,7 @@ UniValue mnbudgetvote(const UniValue& params, bool fHelp)
 
     UniValue resultsObj(UniValue::VARR);
 
-    if (strCommaPlusCoinnd == "local") {
+    if (strCommand == "local") {
         CPubKey pubKeyMasternode;
         CKey keyMasternode;
         std::string errorMessage;
@@ -452,7 +452,7 @@ UniValue mnbudgetvote(const UniValue& params, bool fHelp)
         return returnObj;
     }
 
-    if (strCommaPlusCoinnd == "many") {
+    if (strCommand == "many") {
         BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
             std::string errorMessage;
             std::vector<unsigned char> vchMasterNodeSignature;
@@ -519,7 +519,7 @@ UniValue mnbudgetvote(const UniValue& params, bool fHelp)
         return returnObj;
     }
 
-    if (strCommaPlusCoinnd == "alias") {
+    if (strCommand == "alias") {
         std::string strAlias = params[3].get_str();
         std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
         mnEntries = masternodeConfig.getEntries();
@@ -854,22 +854,22 @@ UniValue mnbudgetrawvote(const UniValue& params, bool fHelp)
 
 UniValue mnfinalbudget(const UniValue& params, bool fHelp)
 {
-    string strCommaPlusCoinnd;
+    string strCommand;
     if (params.size() >= 1)
-        strCommaPlusCoinnd = params[0].get_str();
+        strCommand = params[0].get_str();
 
     if (fHelp ||
-        (strCommaPlusCoinnd != "suggest" && strCommaPlusCoinnd != "vote-many" && strCommaPlusCoinnd != "vote" && strCommaPlusCoinnd != "show" && strCommaPlusCoinnd != "getvotes"))
+        (strCommand != "suggest" && strCommand != "vote-many" && strCommand != "vote" && strCommand != "show" && strCommand != "getvotes"))
         throw runtime_error(
-            "mnfinalbudget \"commapluscoinnd\"... ( \"passphrase\" )\n"
+            "mnfinalbudget \"command\"... ( \"passphrase\" )\n"
             "Vote or show current budgets\n"
-            "\nAvailable commapluscoinnds:\n"
+            "\nAvailable commands:\n"
             "  vote-many   - Vote on a finalized budget\n"
             "  vote        - Vote on a finalized budget\n"
             "  show        - Show existing finalized budgets\n"
             "  getvotes     - Get vote information for each finalized budget\n");
 
-    if (strCommaPlusCoinnd == "vote-many") {
+    if (strCommand == "vote-many") {
         if (params.size() != 2)
             throw runtime_error("Correct usage is 'mnfinalbudget vote-many BUDGET_HASH'");
 
@@ -941,7 +941,7 @@ UniValue mnfinalbudget(const UniValue& params, bool fHelp)
         return returnObj;
     }
 
-    if (strCommaPlusCoinnd == "vote") {
+    if (strCommand == "vote") {
         if (params.size() != 2)
             throw runtime_error("Correct usage is 'mnfinalbudget vote BUDGET_HASH'");
 
@@ -975,7 +975,7 @@ UniValue mnfinalbudget(const UniValue& params, bool fHelp)
         }
     }
 
-    if (strCommaPlusCoinnd == "show") {
+    if (strCommand == "show") {
         UniValue resultObj(UniValue::VOBJ);
 
         std::vector<CFinalizedBudget*> winningFbs = budget.GetFinalizedBudgets();
@@ -999,7 +999,7 @@ UniValue mnfinalbudget(const UniValue& params, bool fHelp)
         return resultObj;
     }
 
-    if (strCommaPlusCoinnd == "getvotes") {
+    if (strCommand == "getvotes") {
         if (params.size() != 2)
             throw runtime_error("Correct usage is 'mnbudget getvotes budget-hash'");
 

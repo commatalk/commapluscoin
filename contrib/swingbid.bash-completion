@@ -110,7 +110,7 @@ _commapluscoind() {
             return 0
             ;;
         *)
-            local helpopts commapluscoinnds
+            local helpopts commands
 
             # only parse --help if senseful
             if [[ -z "$cur" || "$cur" =~ ^- ]]; then
@@ -119,10 +119,10 @@ _commapluscoind() {
 
             # only parse help if senseful
             if [[ -z "$cur" || "$cur" =~ ^[a-z] ]]; then
-                commapluscoinnds=$(_commapluscoin_rpc help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
+                commands=$(_commapluscoin_rpc help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
             fi
 
-            COMPREPLY=( $( compgen -W "$helpopts $commapluscoinnds" -- "$cur" ) )
+            COMPREPLY=( $( compgen -W "$helpopts $commands" -- "$cur" ) )
 
             # Prevent space if an argument is desired
             if [[ $COMPREPLY == *= ]]; then

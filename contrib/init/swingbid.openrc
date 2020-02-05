@@ -19,8 +19,8 @@ BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/commapluscoind}
 name="CommaPlusCoin Core Daemon"
 description="CommaPlusCoin crypto-currency p2p network daemon"
 
-commapluscoinnd="/usr/bin/commapluscoind"
-commapluscoinnd_args="-pid=\"${BITCOIND_PIDFILE}\" \
+command="/usr/bin/commapluscoind"
+command_args="-pid=\"${BITCOIND_PIDFILE}\" \
 		-conf=\"${BITCOIND_CONFIGFILE}\" \
 		-datadir=\"${BITCOIND_DATADIR}\" \
 		-daemon \
@@ -71,7 +71,7 @@ checkconfig()
 		eerror "This password is security critical to securing wallets "
 		eerror "and must not be the same as the rpcuser setting."
 		eerror "You can generate a suitable random password using the following"
-		eerror "commapluscoinnd from the shell:"
+		eerror "command from the shell:"
 		eerror ""
 		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
 		eerror ""

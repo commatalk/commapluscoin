@@ -5,7 +5,7 @@ This directory contains tools for developers working on this repository.
 check-doc.py
 ============
 
-Check if all commapluscoinnd line args are documented. The return value indicates the
+Check if all command line args are documented. The return value indicates the
 number of undocumented args.
 
 github-merge.py

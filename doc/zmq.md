@@ -50,7 +50,7 @@ during the *configure* step of building commapluscoind:
     $ ./configure --disable-zmq (other options)
 
 To actually enable operation, one must set the appropriate options on
-the commapluscoinndline or in the configuration file.
+the commandline or in the configuration file.
 
 ## Usage
 

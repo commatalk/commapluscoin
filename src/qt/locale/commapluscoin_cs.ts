@@ -566,7 +566,7 @@
         <translation>Otevřít &amp;URI...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>Možnosti příkazové řádky</translation>
     </message>
     <message>
@@ -674,7 +674,7 @@
         <translation>Okno blokového průzkumníka</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Zobrazit CommaPlusCoin Core pomocnou zpráv pro získání seznamu možných parametrů CommaPlusCoin pro příkazy do příkazové řádky</translation>
     </message>
     <message>
@@ -1112,7 +1112,7 @@ MultiSend: %1</translation>
         <translation>O CommaPlusCoin Core</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>Možnosti příkazové řádky</translation>
     </message>
     <message>
@@ -1120,7 +1120,7 @@ MultiSend: %1</translation>
         <translation>Použití:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>možnosti příkazové řádky</translation>
     </message>
     <message>
@@ -1262,11 +1262,11 @@ MultiSend: %1</translation>
         <translation>Opravdu chcete spustit VŠECHNY masternody?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>Příkaz teď není dostupný</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>Nemůžete použít tento příkaz, dokud nebude seznam masternodů synchronizován</translation>
     </message>
     <message>

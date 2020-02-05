@@ -180,6 +180,6 @@ void SelectParams(CBaseChainParams::Network network);
  * Looks for -regtest or -testnet and then calls SelectParams as appropriate.
  * Returns false if an invalid combination is given.
  */
-bool SelectParamsFromCommaPlusCoinndLine();
+bool SelectParamsFromCommandLine();
 
 #endif // BITCOIN_CHAINPARAMS_H

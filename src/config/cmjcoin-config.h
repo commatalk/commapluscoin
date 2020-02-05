@@ -204,8 +204,8 @@
 /* Define to 1 if you have the <miniupnpc/miniwget.h> header file. */
 /* #undef HAVE_MINIUPNPC_MINIWGET_H */
 
-/* Define to 1 if you have the <miniupnpc/upnpcommapluscoinnds.h> header file. */
-/* #undef HAVE_MINIUPNPC_UPNPCOMMAPLUSCOINNDS_H */
+/* Define to 1 if you have the <miniupnpc/upnpcommands.h> header file. */
+/* #undef HAVE_MINIUPNPC_UPNPCOMMANDS_H */
 
 /* Define to 1 if you have the <miniupnpc/upnperrors.h> header file. */
 /* #undef HAVE_MINIUPNPC_UPNPERRORS_H */

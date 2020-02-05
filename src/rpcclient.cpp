@@ -110,7 +110,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
         {"submitbudget", 3},
         {"submitbudget", 5},
         {"submitbudget", 7},
-        // disabled until removal of the legacy 'masternode' commapluscoinnd
+        // disabled until removal of the legacy 'masternode' command
         //{"startmasternode", 1},
         {"mnvoteraw", 1},
         {"mnvoteraw", 4},
@@ -161,7 +161,7 @@ UniValue ParseNonRFCJSONValue(const std::string& strVal)
     return jVal[0];
 }
 
-/** Convert strings to commapluscoinnd-specific RPC representation */
+/** Convert strings to command-specific RPC representation */
 UniValue RPCConvertValues(const std::string &strMethod, const std::vector<std::string> &strParams)
 {
     UniValue params(UniValue::VARR);

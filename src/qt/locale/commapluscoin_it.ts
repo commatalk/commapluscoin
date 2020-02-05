@@ -642,7 +642,7 @@
         <translation>Finestra Block Explorer</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Mostra il messaggio di aiuto CommaPlusCoin Core per ottenere un elenco con le possibili opzioni di riga di comando CommaPlusCoin</translation>
     </message>
     <message>
@@ -888,7 +888,7 @@ MultiSend: %1</translation>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>Opzioni linea di comando</translation>
     </message>
     <message>
@@ -896,7 +896,7 @@ MultiSend: %1</translation>
         <translation>Utilizzo:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>opzioni linea di comando</translation>
     </message>
     </context>

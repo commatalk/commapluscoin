@@ -752,8 +752,8 @@
     </message>
     <message>
         <location line="+5"/>
-        <source>&amp;CommaPlusCoinnd-line options</source>
-        <translation>&amp;CommaPlusCoinnd-line options</translation>
+        <source>&amp;Command-line options</source>
+        <translation>&amp;Command-line options</translation>
     </message>
     <message numerus="yes">
         <location line="+463"/>
@@ -906,7 +906,7 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1553,8 +1553,8 @@ Address: %4
     </message>
     <message>
         <location line="+20"/>
-        <source>CommaPlusCoinnd-line options</source>
-        <translation>CommaPlusCoinnd-line options</translation>
+        <source>Command-line options</source>
+        <translation>Command-line options</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1563,8 +1563,8 @@ Address: %4
     </message>
     <message>
         <location line="+1"/>
-        <source>commapluscoinnd-line options</source>
-        <translation>commapluscoinnd-line options</translation>
+        <source>command-line options</source>
+        <translation>command-line options</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1764,12 +1764,12 @@ Address: %4
     </message>
     <message>
         <location line="+23"/>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>You can&apos;t use this commapluscoinnd until masternode list is synced</source>
+        <source>You can&apos;t use this command until masternode list is synced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2399,8 +2399,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location line="+41"/>
-        <source>Active commapluscoinnd-line options that override above options:</source>
-        <translation>Active commapluscoinnd-line options that override above options:</translation>
+        <source>Active command-line options that override above options:</source>
+        <translation>Active command-line options that override above options:</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -3150,8 +3150,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location line="-246"/>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
-        <translation>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</translation>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <translation>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</translation>
     </message>
     <message>
         <location line="-13"/>
@@ -3215,8 +3215,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location line="+1"/>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</source>
-        <translation>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</translation>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
+        <translation>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</translation>
     </message>
     <message>
         <location line="+138"/>
@@ -5018,18 +5018,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location line="+3"/>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation type="unfinished">Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</translation>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation type="unfinished">Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation type="unfinished">Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</translation>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation type="unfinished">Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation type="unfinished">Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</translation>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation type="unfinished">Execute command when the best block changes (%s in cmd is replaced by block hash)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5253,8 +5253,8 @@ for example: alertnotify=echo %%s | mail -s &quot;CommaPlusCoin Alert&quot; admi
     </message>
     <message>
         <location line="+2"/>
-        <source>Accept commapluscoinnd line and JSON-RPC commapluscoinnds</source>
-        <translation type="unfinished">Accept commapluscoinnd line and JSON-RPC commapluscoinnds</translation>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation type="unfinished">Accept command line and JSON-RPC commands</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6070,8 +6070,8 @@ for example: alertnotify=echo %%s | mail -s &quot;CommaPlusCoin Alert&quot; admi
     </message>
     <message>
         <location line="+1"/>
-        <source>Run in the background as a daemon and accept commapluscoinnds</source>
-        <translation type="unfinished">Run in the background as a daemon and accept commapluscoinnds</translation>
+        <source>Run in the background as a daemon and accept commands</source>
+        <translation type="unfinished">Run in the background as a daemon and accept commands</translation>
     </message>
     <message>
         <location line="+1"/>

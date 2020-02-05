@@ -37,8 +37,8 @@
 #   PTHREAD_PRIO_INHERIT symbol is defined when compiling with
 #   PTHREAD_CFLAGS.
 #
-#   ACTION-IF-FOUND is a list of shell commapluscoinnds to run if a threads library
-#   is found, and ACTION-IF-NOT-FOUND is a list of commapluscoinnds to run it if it
+#   ACTION-IF-FOUND is a list of shell commands to run if a threads library
+#   is found, and ACTION-IF-NOT-FOUND is a list of commands to run it if it
 #   is not found. If ACTION-IF-FOUND is not specified, the default action
 #   will define HAVE_PTHREAD.
 #

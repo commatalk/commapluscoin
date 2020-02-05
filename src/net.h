@@ -468,7 +468,7 @@ public:
     void AskFor(const CInv& inv);
 
     // TODO: Document the postcondition of this function.  Is cs_vSend locked?
-    void BeginMessage(const char* pszCommaPlusCoinnd) EXCLUSIVE_LOCK_FUNCTION(cs_vSend);
+    void BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend);
 
     // TODO: Document the precondition of this function.  Is cs_vSend locked?
     void AbortMessage() UNLOCK_FUNCTION(cs_vSend);
@@ -479,10 +479,10 @@ public:
     void PushVersion();
 
 
-    void PushMessage(const char* pszCommaPlusCoinnd)
+    void PushMessage(const char* pszCommand)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -491,10 +491,10 @@ public:
     }
 
     template <typename T1>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1)
+    void PushMessage(const char* pszCommand, const T1& a1)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1;
             EndMessage();
         } catch (...) {
@@ -504,10 +504,10 @@ public:
     }
 
     template <typename T1, typename T2>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2;
             EndMessage();
         } catch (...) {
@@ -517,10 +517,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3;
             EndMessage();
         } catch (...) {
@@ -530,10 +530,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4;
             EndMessage();
         } catch (...) {
@@ -543,10 +543,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5;
             EndMessage();
         } catch (...) {
@@ -556,10 +556,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6;
             EndMessage();
         } catch (...) {
@@ -569,10 +569,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6 << a7;
             EndMessage();
         } catch (...) {
@@ -582,10 +582,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8;
             EndMessage();
         } catch (...) {
@@ -595,10 +595,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9;
             EndMessage();
         } catch (...) {
@@ -608,10 +608,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10;
             EndMessage();
         } catch (...) {
@@ -621,10 +621,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10, typename T11>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10, const T11& a11)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10, const T11& a11)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10 << a11;
             EndMessage();
         } catch (...) {
@@ -634,10 +634,10 @@ public:
     }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10, typename T11, typename T12>
-    void PushMessage(const char* pszCommaPlusCoinnd, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10, const T11& a11, const T12& a12)
+    void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10, const T11& a11, const T12& a12)
     {
         try {
-            BeginMessage(pszCommaPlusCoinnd);
+            BeginMessage(pszCommand);
             ssSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10 << a11 << a12;
             EndMessage();
         } catch (...) {
@@ -676,7 +676,7 @@ public:
     void Subscribe(unsigned int nChannel, unsigned int nHops = 0);
     void CancelSubscribe(unsigned int nChannel);
     void CloseSocketDisconnect();
-    bool DisconnectOldProtocol(int nVersionRequired, std::string strLastCommaPlusCoinnd = "");
+    bool DisconnectOldProtocol(int nVersionRequired, std::string strLastCommand = "");
 
     // Denial-of-service detection/prevention
     // The idea is to detect peers that are behaving

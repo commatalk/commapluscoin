@@ -554,7 +554,7 @@
         <translation>Abrir &amp;URI...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;Opções de linha de comando</translation>
     </message>
     <message>
@@ -662,7 +662,7 @@
         <translation>Janela de exploração de blocos</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Mostra a ajuda da CommaPlusCoin Core para receber uma lista com possíveis opções de linha de comando CommaPlusCoin</translation>
     </message>
     <message>
@@ -1137,7 +1137,7 @@ MultiSend: %1</translation>
         <translation>Sobre o CommaPlusCoin Core</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>Opções de linha de comando</translation>
     </message>
     <message>
@@ -1145,7 +1145,7 @@ MultiSend: %1</translation>
         <translation>Utilização:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>opções de linha de comando</translation>
     </message>
     <message>
@@ -1279,11 +1279,11 @@ MultiSend: %1</translation>
         <translation>Você tem certeza que deseja iniciar TODOS os masternodes?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>Comando não está disponível agora</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>Você não pode utilizar este comando enquanto a lista de masternodes não estiver sincronizada</translation>
     </message>
     <message>
@@ -1969,7 +1969,7 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Atualizar formato da carteira</translation>
     </message>
     <message>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
         <translation>Os botões abaixo vão reiniciar a carteira com opções de linha de comando para reparar a carteira, corrigir problemas com os arquivos corrompidos da blockchain ou transações perdidas/obsoletas.</translation>
     </message>
     <message>
@@ -3215,11 +3215,11 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Erro: Argumento não suportado -socks encontrado. Definir a versão SOCKS não é mais possível, somente proxies SOCKS5 são suportados.</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
         <translation>Executar o comando quando um alerta relevante for recebido ou vermos uma grande bifurcação da rede (%s no cmd é substituído pela mensagem)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
         <translation>Executar o comando quando uma transação da carteira mudar (%s no cmd será substituído pela TxID)</translation>
     </message>
     <message>

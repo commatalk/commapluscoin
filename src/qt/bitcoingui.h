@@ -167,7 +167,7 @@ public slots:
     void setNumConnections(int count);
     /** Set number of blocks shown in the UI */
     void setNumBlocks(int count);
-    /** Get restart commapluscoinnd-line parameters and request restart */
+    /** Get restart command-line parameters and request restart */
     void handleRestart(QStringList args);
 
     /** Notify the user of an event from the core network or transaction handling code.

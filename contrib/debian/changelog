@@ -243,7 +243,7 @@ bitcoin (0.3.24~dfsg-1) unstable; urgency=low
   [ Jonas Smedegaard ]
   * Improve various usage hints:
     + Explicitly mention in long description that bitcoind contains
-      daemon and commapluscoinnd-line interface.
+      daemon and command-line interface.
     + Extend README.Debian with section on lack of GUI, and add primary
       headline.
     + Avoid installing upstream README: contains no parts relevant for

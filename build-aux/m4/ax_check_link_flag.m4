@@ -11,7 +11,7 @@
 #   Check whether the given FLAG works with the linker or gives an error.
 #   (Warnings, however, are ignored)
 #
-#   ACTION-SUCCESS/ACTION-FAILURE are shell commapluscoinnds to execute on
+#   ACTION-SUCCESS/ACTION-FAILURE are shell commands to execute on
 #   success/failure.
 #
 #   If EXTRA-FLAGS is defined, it is added to the linker's default flags

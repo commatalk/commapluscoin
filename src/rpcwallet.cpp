@@ -1611,7 +1611,7 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
             "2. timeout            (numeric, required) The time to keep the decryption key in seconds.\n"
             "\nNote:\n"
-            "Issuing the walletpassphrase commapluscoinnd while the wallet is already unlocked will set a new unlock\n"
+            "Issuing the walletpassphrase command while the wallet is already unlocked will set a new unlock\n"
             "time that overrides the old one. A timeout of \"0\" unlocks until the wallet is closed.\n"
             "\nExamples:\n"
             "\nUnlock the wallet for 60 seconds\n" +
@@ -1792,7 +1792,7 @@ UniValue lockunspent(const UniValue& params, bool fHelp)
             "     ]\n"
 
             "\nResult:\n"
-            "true|false    (boolean) Whether the commapluscoinnd was successful or not\n"
+            "true|false    (boolean) Whether the command was successful or not\n"
 
             "\nExamples:\n"
             "\nList the unspent transactions\n" +
@@ -2135,15 +2135,15 @@ UniValue multisend(const UniValue& params, bool fHelp)
 {
     CWalletDB walletdb(pwalletMain->strWalletFile);
     bool fFileBacked;
-    //MultiSend CommaPlusCoinnds
+    //MultiSend Commands
     if (params.size() == 1) {
-        string strCommaPlusCoinnd = params[0].get_str();
+        string strCommand = params[0].get_str();
         UniValue ret(UniValue::VOBJ);
-        if (strCommaPlusCoinnd == "print") {
+        if (strCommand == "print") {
             return printMultiSend();
-        } else if (strCommaPlusCoinnd == "printaddress" || strCommaPlusCoinnd == "printaddresses") {
+        } else if (strCommand == "printaddress" || strCommand == "printaddresses") {
             return printAddresses();
-        } else if (strCommaPlusCoinnd == "clear") {
+        } else if (strCommand == "clear") {
             LOCK(pwalletMain->cs_wallet);
             {
                 bool erased = false;
@@ -2161,7 +2161,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
 
                 return obj;
             }
-        } else if (strCommaPlusCoinnd == "enablestake" || strCommaPlusCoinnd == "activatestake") {
+        } else if (strCommand == "enablestake" || strCommand == "activatestake") {
             if (pwalletMain->vMultiSend.size() < 1)
                 throw JSONRPCError(RPC_INVALID_REQUEST, "Unable to activate MultiSend, check MultiSend vector");
 
@@ -2179,7 +2179,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
             }
 
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unable to activate MultiSend, check MultiSend vector");
-        } else if (strCommaPlusCoinnd == "enablemasternode" || strCommaPlusCoinnd == "activatemasternode") {
+        } else if (strCommand == "enablemasternode" || strCommand == "activatemasternode") {
             if (pwalletMain->vMultiSend.size() < 1)
                 throw JSONRPCError(RPC_INVALID_REQUEST, "Unable to activate MultiSend, check MultiSend vector");
 
@@ -2198,13 +2198,13 @@ UniValue multisend(const UniValue& params, bool fHelp)
             }
 
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unable to activate MultiSend, check MultiSend vector");
-        } else if (strCommaPlusCoinnd == "disable" || strCommaPlusCoinnd == "deactivate") {
+        } else if (strCommand == "disable" || strCommand == "deactivate") {
             pwalletMain->setMultiSendDisabled();
             if (!walletdb.WriteMSettings(false, false, pwalletMain->nLastMultiSendHeight))
                 throw JSONRPCError(RPC_DATABASE_ERROR, "MultiSend deactivated but writing settings to DB failed");
 
             return printMultiSend();
-        } else if (strCommaPlusCoinnd == "enableall") {
+        } else if (strCommand == "enableall") {
             if (!walletdb.EraseMSDisabledAddresses(pwalletMain->vDisabledAddresses))
                 return "failed to clear old vector from walletDB";
             else {
@@ -2240,10 +2240,10 @@ UniValue multisend(const UniValue& params, bool fHelp)
         }
     }
 
-    //if no commapluscoinnds are used
+    //if no commands are used
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "multisend <commapluscoinnd>\n"
+            "multisend <command>\n"
             "****************************************************************\n"
             "WHAT IS MULTISEND?\n"
             "MultiSend allows a user to automatically send a percent of their stake reward to as many addresses as you would like\n"
@@ -2254,7 +2254,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
             "This will add a new address to the MultiSend vector\n"
             "Percent is a whole number 1 to 100.\n"
             "****************************************************************\n"
-            "MULTISEND COMMAPLUSCOINNDS (usage: multisend <commapluscoinnd>)\n"
+            "MULTISEND COMMANDS (usage: multisend <command>)\n"
             " print - displays the current MultiSend vector \n"
             " clear - deletes the current MultiSend vector \n"
             " enablestake/activatestake - activates the current MultiSend vector to be activated on stake rewards\n"

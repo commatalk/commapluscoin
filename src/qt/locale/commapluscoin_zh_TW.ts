@@ -554,7 +554,7 @@
         <translation>&amp;打開網址</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;命令列工具</translation>
     </message>
     <message>
@@ -662,7 +662,7 @@
         <translation>區塊鏈瀏覽視窗</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>顯示 CommaPlusCoin Core 幫助訊息以取得 CommaPlusCoin 命令列表選項</translation>
     </message>
     <message>

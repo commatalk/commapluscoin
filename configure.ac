@@ -273,7 +273,7 @@ case $host in
 
      dnl libtool insists upon adding -nostdlib and a list of objects/libs to link against.
      dnl That breaks our ability to build dll's with static libgcc/libstdc++/libssp. Override
-     dnl its commapluscoinnd here, with the predeps/postdeps removed, and -static inserted. Postdeps are
+     dnl its command here, with the predeps/postdeps removed, and -static inserted. Postdeps are
      dnl also overridden to prevent their insertion later.
      dnl This should only affect dll's.
      archive_cmds_CXX="\$CC -shared \$libobjs \$deplibs \$compiler_flags -static -o \$output_objdir/\$soname \${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker \$lib"
@@ -552,7 +552,7 @@ fi
 dnl Check for libminiupnpc (optional)
 if test x$use_upnp != xno; then
   AC_CHECK_HEADERS(
-    [miniupnpc/miniwget.h miniupnpc/miniupnpc.h miniupnpc/upnpcommapluscoinnds.h miniupnpc/upnperrors.h],
+    [miniupnpc/miniwget.h miniupnpc/miniupnpc.h miniupnpc/upnpcommands.h miniupnpc/upnperrors.h],
     [AC_CHECK_LIB([miniupnpc], [main],[MINIUPNPC_LIBS=-lminiupnpc], [have_miniupnpc=no])],
     [have_miniupnpc=no]
   )

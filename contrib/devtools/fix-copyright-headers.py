@@ -22,14 +22,14 @@ import time
 
 year = time.gmtime()[0]
 last_year = year - 1
-commapluscoinnd = "perl -pi -e 's/%s The Bitcoin/%s The Bitcoin/' %s"
-listFilesCommaPlusCoinnd = "find . | grep %s"
+command = "perl -pi -e 's/%s The Bitcoin/%s The Bitcoin/' %s"
+listFilesCommand = "find . | grep %s"
 
 extensions = [".cpp",".h"]
 
 def getLastGitModifiedDate(filePath):
-  gitGetLastCommitDateCommaPlusCoinnd = "git log " + filePath +" | grep Date | head -n 1"
-  p = os.popen(gitGetLastCommitDateCommaPlusCoinnd)
+  gitGetLastCommitDateCommand = "git log " + filePath +" | grep Date | head -n 1"
+  p = os.popen(gitGetLastCommitDateCommand)
   result = ""
   for l in p:
     result = l
@@ -39,7 +39,7 @@ def getLastGitModifiedDate(filePath):
 
 n=1
 for extension in extensions:
-  foundFiles = os.popen(listFilesCommaPlusCoinnd % extension)
+  foundFiles = os.popen(listFilesCommand % extension)
   for filePath in foundFiles:
     filePath = filePath[1:-1]
     if filePath.endswith(extension):
@@ -47,7 +47,7 @@ for extension in extensions:
       modifiedTime = getLastGitModifiedDate(filePath)
       if len(modifiedTime) > 0 and str(year) in modifiedTime:
         print n,"Last Git Modified: ", modifiedTime, " - ", filePath
-        os.popen(commapluscoinnd % (last_year,year,filePath))
+        os.popen(command % (last_year,year,filePath))
         n = n + 1
 
 

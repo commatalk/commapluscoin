@@ -39,8 +39,8 @@ enum RPCErrorCode {
     RPC_PARSE_ERROR = -32700,
 
     //! General application defined errors
-    RPC_MISC_ERROR = -1,               //! std::exception thrown in commapluscoinnd handling
-    RPC_FORBIDDEN_BY_SAFE_MODE = -2,   //! Server is in safe mode, and commapluscoinnd is not allowed in safe mode
+    RPC_MISC_ERROR = -1,               //! std::exception thrown in command handling
+    RPC_FORBIDDEN_BY_SAFE_MODE = -2,   //! Server is in safe mode, and command is not allowed in safe mode
     RPC_TYPE_ERROR = -3,               //! Unexpected type was passed as parameter
     RPC_INVALID_ADDRESS_OR_KEY = -5,   //! Invalid address or key
     RPC_OUT_OF_MEMORY = -7,            //! Ran out of memory during operation
@@ -72,7 +72,7 @@ enum RPCErrorCode {
     RPC_WALLET_KEYPOOL_RAN_OUT = -12,      //! Keypool ran out, call keypoolrefill first
     RPC_WALLET_UNLOCK_NEEDED = -13,        //! Enter the wallet passphrase with walletpassphrase first
     RPC_WALLET_PASSPHRASE_INCORRECT = -14, //! The wallet passphrase entered was incorrect
-    RPC_WALLET_WRONG_ENC_STATE = -15,      //! CommaPlusCoinnd given in wrong wallet encryption state (encrypting an encrypted wallet etc.)
+    RPC_WALLET_WRONG_ENC_STATE = -15,      //! Command given in wrong wallet encryption state (encrypting an encrypted wallet etc.)
     RPC_WALLET_ENCRYPTION_FAILED = -16,    //! Failed to encrypt the wallet
     RPC_WALLET_ALREADY_UNLOCKED = -17,     //! Wallet is already unlocked
 };

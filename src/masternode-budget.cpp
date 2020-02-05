@@ -979,7 +979,7 @@ void CBudgetManager::NewBlock()
     LogPrint("masternode","CBudgetManager::NewBlock - PASSED\n");
 }
 
-void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinnd, CDataStream& vRecv)
+void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     // lite mode is not supported
     if (fLiteMode) return;
@@ -987,7 +987,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
 
     LOCK(cs_budget);
 
-    if (strCommaPlusCoinnd == "mnvs") { //Masternode vote sync
+    if (strCommand == "mnvs") { //Masternode vote sync
         uint256 nProp;
         vRecv >> nProp;
 
@@ -1006,7 +1006,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
         LogPrint("mnbudget", "mnvs - Sent Masternode votes to peer %i\n", pfrom->GetId());
     }
 
-    if (strCommaPlusCoinnd == "mprop") { //Masternode Proposal
+    if (strCommand == "mprop") { //Masternode Proposal
         CBudgetProposalBroadcast budgetProposalBroadcast;
         vRecv >> budgetProposalBroadcast;
 
@@ -1042,7 +1042,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
         CheckOrphanVotes();
     }
 
-    if (strCommaPlusCoinnd == "mvote") { //Masternode Vote
+    if (strCommand == "mvote") { //Masternode Vote
         CBudgetVote vote;
         vRecv >> vote;
         vote.fValid = true;
@@ -1078,7 +1078,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
         LogPrint("masternode","mvote - new budget vote for budget %s - %s\n", vote.nProposalHash.ToString(),  vote.GetHash().ToString());
     }
 
-    if (strCommaPlusCoinnd == "fbs") { //Finalized Budget Suggestion
+    if (strCommand == "fbs") { //Finalized Budget Suggestion
         CFinalizedBudgetBroadcast finalizedBudgetBroadcast;
         vRecv >> finalizedBudgetBroadcast;
 
@@ -1115,7 +1115,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinn
         CheckOrphanVotes();
     }
 
-    if (strCommaPlusCoinnd == "fbvote") { //Finalized Budget Vote
+    if (strCommand == "fbvote") { //Finalized Budget Vote
         CFinalizedBudgetVote vote;
         vRecv >> vote;
         vote.fValid = true;

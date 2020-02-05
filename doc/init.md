@@ -63,7 +63,7 @@ can then be controlled by group membership.
 4a) systemd
 
 Installing this .service file consists on just copying it to
-/usr/lib/systemd/system directory, followed by the commapluscoinnd
+/usr/lib/systemd/system directory, followed by the command
 "systemctl daemon-reload" in order to update running systemd configuration.
 
 To test, run "systemctl start commapluscoind" and to enable for system startup run

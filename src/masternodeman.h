@@ -137,7 +137,7 @@ public:
 
     void ProcessMasternodeConnections();
 
-    void ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinnd, CDataStream& vRecv);
+    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 
     /// Return the number of (unique) Masternodes
     int size() { return vMasternodes.size(); }

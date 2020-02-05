@@ -1266,7 +1266,7 @@
           </font>
          </property>
          <property name="text">
-          <string>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</string>
+          <string>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -1410,7 +1410,7 @@
         </widget>
        </item>
        <item row="7" column="2">
-        <widget class="QLabel" name="label_repair_salvage_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_salvage_command">
          <property name="text">
           <string notr="true">-salvagewallet:</string>
          </property>
@@ -1440,7 +1440,7 @@
         </widget>
        </item>
        <item row="8" column="2">
-        <widget class="QLabel" name="label_repair_rescan_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_rescan_command">
          <property name="text">
           <string notr="true">-rescan:</string>
          </property>
@@ -1470,7 +1470,7 @@
         </widget>
        </item>
        <item row="9" column="2">
-        <widget class="QLabel" name="label_repair_zap1_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_zap1_command">
          <property name="text">
           <string notr="true">-zapwallettxes=1:</string>
          </property>
@@ -1500,7 +1500,7 @@
         </widget>
        </item>
        <item row="10" column="2">
-        <widget class="QLabel" name="label_repair_zap2_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_zap2_command">
          <property name="text">
           <string notr="true">-zapwallettxes=2:</string>
          </property>
@@ -1530,7 +1530,7 @@
         </widget>
        </item>
        <item row="11" column="2">
-        <widget class="QLabel" name="label_repair_upgrade_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_upgrade_command">
          <property name="text">
           <string notr="true">-upgradewallet:</string>
          </property>
@@ -1560,7 +1560,7 @@
         </widget>
        </item>
        <item row="12" column="2">
-        <widget class="QLabel" name="label_repair_reindex_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_reindex_command">
          <property name="text">
           <string notr="true">-reindex:</string>
          </property>
@@ -1590,7 +1590,7 @@
         </widget>
        </item>
        <item row="13" column="2">
-        <widget class="QLabel" name="label_repair_resync_commapluscoinnd">
+        <widget class="QLabel" name="label_repair_resync_command">
          <property name="text">
           <string>-resync:</string>
          </property>

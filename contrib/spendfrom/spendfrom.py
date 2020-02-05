@@ -71,7 +71,7 @@ def connect_JSON(config):
     connect = "http://%s:%s@127.0.0.1:%s"%(config['rpcuser'], config['rpcpassword'], config['rpcport'])
     try:
         result = ServiceProxy(connect)
-        # ServiceProxy is lazy-connect, so send an RPC commapluscoinnd mostly to catch connection errors,
+        # ServiceProxy is lazy-connect, so send an RPC command mostly to catch connection errors,
         # but also make sure the commapluscoind we're talking to is/isn't testnet:
         if result.getmininginfo()['testnet'] != testnet:
             sys.stderr.write("RPC server at "+connect+" testnet setting mismatch\n")

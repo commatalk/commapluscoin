@@ -33,7 +33,7 @@
 #ifdef USE_UPNP
 #include <miniupnpc/miniupnpc.h>
 #include <miniupnpc/miniwget.h>
-#include <miniupnpc/upnpcommapluscoinnds.h>
+#include <miniupnpc/upnpcommands.h>
 #include <miniupnpc/upnperrors.h>
 #endif
 
@@ -467,12 +467,12 @@ void CNode::CloseSocketDisconnect()
         vRecvMsg.clear();
 }
 
-bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommaPlusCoinnd)
+bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
 {
     fDisconnect = false;
     if (nVersion < nVersionRequired) {
         LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
-        PushMessage("reject", strLastCommaPlusCoinnd, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
+        PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
     }
 
@@ -1125,7 +1125,7 @@ void ThreadMapPort()
         if (fDiscover) {
             char externalIPAddress[40];
             r = UPNP_GetExternalIPAddress(urls.controlURL, data.first.servicetype, externalIPAddress);
-            if (r != UPNPCOMMAPLUSCOINND_SUCCESS)
+            if (r != UPNPCOMMAND_SUCCESS)
                 LogPrintf("UPnP: GetExternalIPAddress() returned %d\n", r);
             else {
                 if (externalIPAddress[0]) {
@@ -1150,7 +1150,7 @@ void ThreadMapPort()
                     port.c_str(), port.c_str(), lanaddr, strDesc.c_str(), "TCP", 0, "0");
 #endif
 
-                if (r != UPNPCOMMAPLUSCOINND_SUCCESS)
+                if (r != UPNPCOMMAND_SUCCESS)
                     LogPrintf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
                         port, port, lanaddr, r, strupnperror(r));
                 else
@@ -2123,12 +2123,12 @@ void CNode::AskFor(const CInv& inv)
     mapAskFor.insert(std::make_pair(nRequestTime, inv));
 }
 
-void CNode::BeginMessage(const char* pszCommaPlusCoinnd) EXCLUSIVE_LOCK_FUNCTION(cs_vSend)
+void CNode::BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend)
 {
     ENTER_CRITICAL_SECTION(cs_vSend);
     assert(ssSend.size() == 0);
-    ssSend << CMessageHeader(pszCommaPlusCoinnd, 0);
-    LogPrint("net", "sending: %s ", SanitizeString(pszCommaPlusCoinnd));
+    ssSend << CMessageHeader(pszCommand, 0);
+    LogPrint("net", "sending: %s ", SanitizeString(pszCommand));
 }
 
 void CNode::AbortMessage() UNLOCK_FUNCTION(cs_vSend)

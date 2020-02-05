@@ -562,7 +562,7 @@
         <translation>Открыть &amp;URI</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;Параметры командной строки</translation>
     </message>
     <message>
@@ -670,7 +670,7 @@
         <translation>Окно обзора блока</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Смотрите помощь к программе, чтобы получить документацию ко всем возможным опциям комманды CommaPlusCoin</translation>
     </message>
     <message>
@@ -1148,7 +1148,7 @@ MultiSend: %1</translation>
         <translation>О CommaPlusCoin Core</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>Параметры командной строки</translation>
     </message>
     <message>
@@ -1156,7 +1156,7 @@ MultiSend: %1</translation>
         <translation>Применение:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>параметры командной строки</translation>
     </message>
     <message>
@@ -1318,11 +1318,11 @@ MultiSend: %1</translation>
         <translation>Вы уверены, что хотите запустить ВСЕ мастерноды?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>Команда сейчас недоступна</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>Использование этой команды невозможно пока не синхронизирован список мастернод</translation>
     </message>
     <message>
@@ -1659,7 +1659,7 @@ Please check the address and try again.</source>
         <translation>Сторонние ссылки</translation>
     </message>
     <message>
-        <source>Active commapluscoinnd-line options that override above options:</source>
+        <source>Active command-line options that override above options:</source>
         <translation>Активные опции коммандной строки, которые переписывают опции выше:</translation>
     </message>
     <message>
@@ -2161,7 +2161,7 @@ Please check the address and try again.</source>
         <translation>Перестроить индекс блокчейна из текущих blk000??.dat файлов.</translation>
     </message>
     <message>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
         <translation>Кнопка ниже перезапустит кошелёк с некоторыми опциями кммандной строки чтобы отремотировать кошелёк, файлы блокчейна и пропавшие / устаревшие транзакции. </translation>
     </message>
     <message>
@@ -2194,7 +2194,7 @@ Please check the address and try again.</source>
         <translation>Используйте стрелки вверх и вниз для навигации по истории, и &lt;b&gt;Ctrl-L&lt;/b&gt; для очистки экрана.</translation>
     </message>
     <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</source>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Введите &lt;b&gt;help&lt;/b&gt; для просмотра доступных команд.</translation>
     </message>
     <message>
@@ -3124,7 +3124,7 @@ Please check the address and try again.</source>
         <translation>Повторное сканирование ...</translation>
     </message>
     <message>
-        <source>Run in the background as a daemon and accept commapluscoinnds</source>
+        <source>Run in the background as a daemon and accept commands</source>
         <translation>Запускать в фоновом режиме в качестве демона и принимать команды</translation>
     </message>
     <message>

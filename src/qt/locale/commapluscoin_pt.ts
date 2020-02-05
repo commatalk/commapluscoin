@@ -951,7 +951,7 @@
         <translation>Execute uma thread para liberar a carteira periodicamente (padrão: %u)</translation>
     </message>
     <message>
-        <source>Run in the background as a daemon and accept commapluscoinnds</source>
+        <source>Run in the background as a daemon and accept commands</source>
         <translation>Executar em segundo plano como um daemon e aceitar comandos</translation>
     </message>
     <message>

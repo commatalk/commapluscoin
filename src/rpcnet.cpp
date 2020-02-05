@@ -44,7 +44,7 @@ UniValue ping(const UniValue& params, bool fHelp)
             "ping\n"
             "\nRequests that a ping be sent to all other nodes, to measure ping time.\n"
             "Results provided in getpeerinfo, pingtime and pingwait fields are decimal seconds.\n"
-            "Ping commapluscoinnd is handled in queue with all other commapluscoinnds, so it measures processing backlog, not just network ping.\n"
+            "Ping command is handled in queue with all other commands, so it measures processing backlog, not just network ping.\n"
             "\nExamples:\n" +
             HelpExampleCli("ping", "") + HelpExampleRpc("ping", ""));
 
@@ -156,24 +156,24 @@ UniValue getpeerinfo(const UniValue& params, bool fHelp)
 
 UniValue addnode(const UniValue& params, bool fHelp)
 {
-    string strCommaPlusCoinnd;
+    string strCommand;
     if (params.size() == 2)
-        strCommaPlusCoinnd = params[1].get_str();
+        strCommand = params[1].get_str();
     if (fHelp || params.size() != 2 ||
-        (strCommaPlusCoinnd != "onetry" && strCommaPlusCoinnd != "add" && strCommaPlusCoinnd != "remove"))
+        (strCommand != "onetry" && strCommand != "add" && strCommand != "remove"))
         throw runtime_error(
             "addnode \"node\" \"add|remove|onetry\"\n"
             "\nAttempts add or remove a node from the addnode list.\n"
             "Or try a connection to a node once.\n"
             "\nArguments:\n"
             "1. \"node\"     (string, required) The node (see getpeerinfo for nodes)\n"
-            "2. \"commapluscoinnd\"  (string, required) 'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once\n"
+            "2. \"command\"  (string, required) 'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once\n"
             "\nExamples:\n" +
             HelpExampleCli("addnode", "\"192.168.0.6:34520\" \"onetry\"") + HelpExampleRpc("addnode", "\"192.168.0.6:34520\", \"onetry\""));
 
     string strNode = params[0].get_str();
 
-    if (strCommaPlusCoinnd == "onetry") {
+    if (strCommand == "onetry") {
         CAddress addr;
         OpenNetworkConnection(addr, NULL, strNode.c_str());
         return NullUniValue;
@@ -185,11 +185,11 @@ UniValue addnode(const UniValue& params, bool fHelp)
         if (strNode == *it)
             break;
 
-    if (strCommaPlusCoinnd == "add") {
+    if (strCommand == "add") {
         if (it != vAddedNodes.end())
             throw JSONRPCError(RPC_CLIENT_NODE_ALREADY_ADDED, "Error: Node already added");
         vAddedNodes.push_back(strNode);
-    } else if (strCommaPlusCoinnd == "remove") {
+    } else if (strCommand == "remove") {
         if (it == vAddedNodes.end())
             throw JSONRPCError(RPC_CLIENT_NODE_NOT_ADDED, "Error: Node has not been added.");
         vAddedNodes.erase(it);
@@ -429,17 +429,17 @@ UniValue getnetworkinfo(const UniValue& params, bool fHelp)
 
 UniValue setban(const UniValue& params, bool fHelp)
 {
-    string strCommaPlusCoinnd;
+    string strCommand;
     if (params.size() >= 2)
-        strCommaPlusCoinnd = params[1].get_str();
+        strCommand = params[1].get_str();
     if (fHelp || params.size() < 2 ||
-        (strCommaPlusCoinnd != "add" && strCommaPlusCoinnd != "remove"))
+        (strCommand != "add" && strCommand != "remove"))
         throw runtime_error(
                             "setban \"ip(/netmask)\" \"add|remove\" (bantime) (absolute)\n"
                             "\nAttempts add or remove a IP/Subnet from the banned list.\n"
                             "\nArguments:\n"
                             "1. \"ip(/netmask)\" (string, required) The IP/Subnet (see getpeerinfo for nodes ip) with a optional netmask (default is /32 = single ip)\n"
-                            "2. \"commapluscoinnd\"      (string, required) 'add' to add a IP/Subnet to the list, 'remove' to remove a IP/Subnet from the list\n"
+                            "2. \"command\"      (string, required) 'add' to add a IP/Subnet to the list, 'remove' to remove a IP/Subnet from the list\n"
                             "3. \"bantime\"      (numeric, optional) time in seconds how long (or until when if [absolute] is set) the ip is banned (0 or empty means using the default time of 24h which can also be overwritten by the -bantime startup argument)\n"
                             "4. \"absolute\"     (boolean, optional) If set, the bantime must be a absolute timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
                             "\nExamples:\n"
@@ -463,7 +463,7 @@ UniValue setban(const UniValue& params, bool fHelp)
     if (! (isSubnet ? subNet.IsValid() : netAddr.IsValid()) )
         throw JSONRPCError(RPC_CLIENT_NODE_ALREADY_ADDED, "Error: Invalid IP/Subnet");
 
-    if (strCommaPlusCoinnd == "add")
+    if (strCommand == "add")
     {
         if (isSubnet ? CNode::IsBanned(subNet) : CNode::IsBanned(netAddr))
             throw JSONRPCError(RPC_CLIENT_NODE_ALREADY_ADDED, "Error: IP/Subnet already banned");
@@ -482,7 +482,7 @@ UniValue setban(const UniValue& params, bool fHelp)
         while(CNode *bannedNode = (isSubnet ? FindNode(subNet) : FindNode(netAddr)))
             bannedNode->CloseSocketDisconnect();
     }
-    else if(strCommaPlusCoinnd == "remove")
+    else if(strCommand == "remove")
     {
         if (!( isSubnet ? CNode::Unban(subNet) : CNode::Unban(netAddr) ))
             throw JSONRPCError(RPC_MISC_ERROR, "Error: Unban failed");

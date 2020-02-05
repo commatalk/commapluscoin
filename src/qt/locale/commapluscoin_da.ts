@@ -566,7 +566,7 @@
         <translation>Åbn &amp;URL</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;Kommandolinieparametre</translation>
     </message>
     <message>
@@ -674,7 +674,7 @@
         <translation>Blockexplorer vindue</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Vis hjelpetekster fra CommaPlusCoin kernen for at få en liste med mulige CommaPlusCoin kommandolinie-startparametre</translation>
     </message>
     <message>
@@ -1152,7 +1152,7 @@ Adresse: %4
         <translation>om CommaPlusCoin kerne</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>Kommandolinieparametre</translation>
     </message>
     <message>
@@ -1160,7 +1160,7 @@ Adresse: %4
         <translation>Anvendelse:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>kommandolinieparametre</translation>
     </message>
     <message>
@@ -1322,11 +1322,11 @@ Adresse: %4
         <translation>Er De sikker på at de vil starte ALLE masternoderne?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>Denne kommando er ikke tilgængelig lige nu</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>De kan ikke bruge denne kommando før masternodelisten er synkroniseret</translation>
     </message>
     <message>
@@ -1663,7 +1663,7 @@ Kontroller adressen og prøv igen.</translation>
         <translation>Tredjepartis transaktions URLs</translation>
     </message>
     <message>
-        <source>Active commapluscoinnd-line options that override above options:</source>
+        <source>Active command-line options that override above options:</source>
         <translation>Aktive kommandolinieparametre der trumfer ovenstående muligheder.</translation>
     </message>
     <message>
@@ -2177,7 +2177,7 @@ Kontroller adressen og prøv igen.</translation>
         <translation>Genopbyg blokkædens indeks fra de aktuelle blk000??.dat filer</translation>
     </message>
     <message>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
         <translation>Nedenstående knapper vil genstarte tegnebogen med kommandolinieparametre fr at reparere den, korrigere fejl og mangler i block-chain filerne, herunder også undersøge for manglende eller fejlagtige transaktioner</translation>
     </message>
     <message>
@@ -2209,7 +2209,7 @@ Kontroller adressen og prøv igen.</translation>
         <translation>Brug piltasterne for at navigere rundt i historiedata, og &lt;b&gt;Ctrl-L&lt;/b&gt; for at tømme skærmen.</translation>
     </message>
     <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</source>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Tast &lt;b&gt;help&gt; for at få en oversigt over tilgængelige kommandoer</translation>
     </message>
     <message>
@@ -3596,15 +3596,15 @@ Kontroller adressen og prøv igen.</translation>
         <translation>Fejl! Argumentet er ikke understøttet -socks found. Det er ikke muligt at bestemme hvilken SOCKS version længere. Kun SOCKS5 proxies understøttes.</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
         <translation>Udfør en kommando når der modtages en alarm, eller der opdages en meget lang fork (%s in cmd erstattet af en besked)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
         <translation>Udfør en kommando når en transaktion i tegnebogen ændres (%s in cmd erstattet af TxID)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</source>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
         <translation>Udfør en kommando når den bedste blok ændres (%s in cmd erstattes med blok hashen)</translation>
     </message>
     <message>
@@ -3796,7 +3796,7 @@ For eksempel: alertnotify=Echo %% | mail - s "CommaPlusCoin ALARM!" e-mail@admin
         <translation>(skal være 34520 for hovednettet)</translation>
     </message>
     <message>
-        <source>Accept commapluscoinnd line and JSON-RPC commapluscoinnds</source>
+        <source>Accept command line and JSON-RPC commands</source>
         <translation>Accepter kommandolinie og JSON-RPC kommandoer</translation>
     </message>
     <message>
@@ -4332,7 +4332,7 @@ For eksempel: alertnotify=Echo %% | mail - s "CommaPlusCoin ALARM!" e-mail@admin
         <translation>Kør en tråd periodevist for at rense tegnebogen ud (default %u)</translation>
     </message>
     <message>
-        <source>Run in the background as a daemon and accept commapluscoinnds</source>
+        <source>Run in the background as a daemon and accept commands</source>
         <translation>Kør en tråd i baggrunden som en særlig service og tag imod kommandoer </translation>
     </message>
     <message>

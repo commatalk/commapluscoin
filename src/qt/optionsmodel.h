@@ -66,7 +66,7 @@ public:
     QString getThirdPartyTxUrls() { return strThirdPartyTxUrls; }
     bool getProxySettings(QNetworkProxy& proxy) const;
     bool getCoinControlFeatures() { return fCoinControlFeatures; }
-    const QString& getOverriddenByCommaPlusCoinndLine() { return strOverriddenByCommaPlusCoinndLine; }
+    const QString& getOverriddenByCommandLine() { return strOverriddenByCommandLine; }
 
     /* Restart flag helper */
     void setRestartRequired(bool fRequired);
@@ -81,10 +81,10 @@ private:
     int nDisplayUnit;
     QString strThirdPartyTxUrls;
     bool fCoinControlFeatures;
-    /* settings that were overriden by commapluscoinnd-line */
-    QString strOverriddenByCommaPlusCoinndLine;
+    /* settings that were overriden by command-line */
+    QString strOverriddenByCommandLine;
 
-    /// Add option to list of GUI options overridden through commapluscoinnd line/config file
+    /// Add option to list of GUI options overridden through command line/config file
     void addOverriddenOption(const std::string& option);
 
 signals:

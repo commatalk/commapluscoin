@@ -35,23 +35,23 @@ static const char* ppszTypeName[] =
 CMessageHeader::CMessageHeader()
 {
     memcpy(pchMessageStart, Params().MessageStart(), MESSAGE_START_SIZE);
-    memset(pchCommaPlusCoinnd, 0, sizeof(pchCommaPlusCoinnd));
+    memset(pchCommand, 0, sizeof(pchCommand));
     nMessageSize = -1;
     nChecksum = 0;
 }
 
-CMessageHeader::CMessageHeader(const char* pszCommaPlusCoinnd, unsigned int nMessageSizeIn)
+CMessageHeader::CMessageHeader(const char* pszCommand, unsigned int nMessageSizeIn)
 {
     memcpy(pchMessageStart, Params().MessageStart(), MESSAGE_START_SIZE);
-    memset(pchCommaPlusCoinnd, 0, sizeof(pchCommaPlusCoinnd));
-    strncpy(pchCommaPlusCoinnd, pszCommaPlusCoinnd, COMMAPLUSCOINND_SIZE);
+    memset(pchCommand, 0, sizeof(pchCommand));
+    strncpy(pchCommand, pszCommand, COMMAND_SIZE);
     nMessageSize = nMessageSizeIn;
     nChecksum = 0;
 }
 
-std::string CMessageHeader::GetCommaPlusCoinnd() const
+std::string CMessageHeader::GetCommand() const
 {
-    return std::string(pchCommaPlusCoinnd, pchCommaPlusCoinnd + strnlen_int(pchCommaPlusCoinnd, COMMAPLUSCOINND_SIZE));
+    return std::string(pchCommand, pchCommand + strnlen_int(pchCommand, COMMAND_SIZE));
 }
 
 bool CMessageHeader::IsValid() const
@@ -60,11 +60,11 @@ bool CMessageHeader::IsValid() const
     if (memcmp(pchMessageStart, Params().MessageStart(), MESSAGE_START_SIZE) != 0)
         return false;
 
-    // Check the commapluscoinnd string for errors
-    for (const char* p1 = pchCommaPlusCoinnd; p1 < pchCommaPlusCoinnd + COMMAPLUSCOINND_SIZE; p1++) {
+    // Check the command string for errors
+    for (const char* p1 = pchCommand; p1 < pchCommand + COMMAND_SIZE; p1++) {
         if (*p1 == 0) {
             // Must be all zeros after the first zero
-            for (; p1 < pchCommaPlusCoinnd + COMMAPLUSCOINND_SIZE; p1++)
+            for (; p1 < pchCommand + COMMAND_SIZE; p1++)
                 if (*p1 != 0)
                     return false;
         } else if (*p1 < ' ' || *p1 > 0x7E)
@@ -73,7 +73,7 @@ bool CMessageHeader::IsValid() const
 
     // Message size
     if (nMessageSize > MAX_SIZE) {
-        LogPrintf("CMessageHeader::IsValid() : (%s, %u bytes) nMessageSize > MAX_SIZE\n", GetCommaPlusCoinnd(), nMessageSize);
+        LogPrintf("CMessageHeader::IsValid() : (%s, %u bytes) nMessageSize > MAX_SIZE\n", GetCommand(), nMessageSize);
         return false;
     }
 
@@ -139,15 +139,15 @@ bool CInv::IsMasterNodeType() const{
  	return (type >= 6);
 }
 
-const char* CInv::GetCommaPlusCoinnd() const
+const char* CInv::GetCommand() const
 {
     if (!IsKnownType())
-        LogPrint("net", "CInv::GetCommaPlusCoinnd() : type=%d unknown type", type);
+        LogPrint("net", "CInv::GetCommand() : type=%d unknown type", type);
 
     return ppszTypeName[type];
 }
 
 std::string CInv::ToString() const
 {
-    return strprintf("%s %s", GetCommaPlusCoinnd(), hash.ToString());
+    return strprintf("%s %s", GetCommand(), hash.ToString());
 }

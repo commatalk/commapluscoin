@@ -4,7 +4,7 @@ import string
 import getpass
 
 # ===== BEGIN USER SETTINGS =====
-# if you do not set these you will be prompted for a password for every commapluscoinnd
+# if you do not set these you will be prompted for a password for every command
 rpcuser = ""
 rpcpass = ""
 # ====== END USER SETTINGS ======
@@ -167,7 +167,7 @@ elif cmd == "getwork":
 
 elif cmd == "help":
     try:
-        cmd = raw_input("CommaPlusCoinnd (optional): ")
+        cmd = raw_input("Command (optional): ")
         try:
             print access.help(cmd)
         except:
@@ -334,4 +334,4 @@ elif cmd == "walletpassphrasechange":
         print
 
 else:
-    print "CommaPlusCoinnd not found or not supported"
+    print "Command not found or not supported"

@@ -52,28 +52,28 @@ void SendMoney(const CTxDestination& address, CAmount nValue, CWalletTx& wtxNew,
         throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.");
 }
 
-// This commapluscoinnd is retained for backwards compatibility, but is deprecated.
-// Future removal of this commapluscoinnd is planned to keep things clean.
+// This command is retained for backwards compatibility, but is deprecated.
+// Future removal of this command is planned to keep things clean.
 UniValue masternode(const UniValue& params, bool fHelp)
 {
-    string strCommaPlusCoinnd;
+    string strCommand;
     if (params.size() >= 1)
-        strCommaPlusCoinnd = params[0].get_str();
+        strCommand = params[0].get_str();
 
     if (fHelp ||
-        (strCommaPlusCoinnd != "start" && strCommaPlusCoinnd != "start-alias" && strCommaPlusCoinnd != "start-many" && strCommaPlusCoinnd != "start-all" && strCommaPlusCoinnd != "start-missing" &&
-            strCommaPlusCoinnd != "start-disabled" && strCommaPlusCoinnd != "list" && strCommaPlusCoinnd != "list-conf" && strCommaPlusCoinnd != "count" && strCommaPlusCoinnd != "enforce" &&
-            strCommaPlusCoinnd != "debug" && strCommaPlusCoinnd != "current" && strCommaPlusCoinnd != "winners" && strCommaPlusCoinnd != "genkey" && strCommaPlusCoinnd != "connect" &&
-            strCommaPlusCoinnd != "outputs" && strCommaPlusCoinnd != "status" && strCommaPlusCoinnd != "calcscore"))
+        (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "start-all" && strCommand != "start-missing" &&
+            strCommand != "start-disabled" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count" && strCommand != "enforce" &&
+            strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" &&
+            strCommand != "outputs" && strCommand != "status" && strCommand != "calcscore"))
         throw runtime_error(
-            "masternode \"commapluscoinnd\"...\n"
-            "\nSet of commapluscoinnds to execute masternode related actions\n"
-            "This commapluscoinnd is deprecated, please see individual commapluscoinnd documentation for future reference\n\n"
+            "masternode \"command\"...\n"
+            "\nSet of commands to execute masternode related actions\n"
+            "This command is deprecated, please see individual command documentation for future reference\n\n"
 
             "\nArguments:\n"
-            "1. \"commapluscoinnd\"        (string or set of strings, required) The commapluscoinnd to execute\n"
+            "1. \"command\"        (string or set of strings, required) The command to execute\n"
 
-            "\nAvailable commapluscoinnds:\n"
+            "\nAvailable commands:\n"
             "  count        - Print count information of all known masternodes\n"
             "  current      - Print info on current masternode winner\n"
             "  debug        - Print masternode status\n"
@@ -87,103 +87,103 @@ UniValue masternode(const UniValue& params, bool fHelp)
             "  list-conf    - Print masternode.conf in JSON format\n"
             "  winners      - Print list of masternode winners\n");
 
-    if (strCommaPlusCoinnd == "list") {
+    if (strCommand == "list") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return listmasternodes(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "connect") {
+    if (strCommand == "connect") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return masternodeconnect(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "count") {
+    if (strCommand == "count") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getmasternodecount(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "current") {
+    if (strCommand == "current") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return masternodecurrent(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "debug") {
+    if (strCommand == "debug") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return masternodedebug(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "start" || strCommaPlusCoinnd == "start-alias" || strCommaPlusCoinnd == "start-many" || strCommaPlusCoinnd == "start-all" || strCommaPlusCoinnd == "start-missing" || strCommaPlusCoinnd == "start-disabled") {
+    if (strCommand == "start" || strCommand == "start-alias" || strCommand == "start-many" || strCommand == "start-all" || strCommand == "start-missing" || strCommand == "start-disabled") {
         return startmasternode(params, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "genkey") {
+    if (strCommand == "genkey") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return createmasternodekey(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "list-conf") {
+    if (strCommand == "list-conf") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return listmasternodeconf(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "outputs") {
+    if (strCommand == "outputs") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getmasternodeoutputs(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "status") {
+    if (strCommand == "status") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getmasternodestatus(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "winners") {
+    if (strCommand == "winners") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
         return getmasternodewinners(newParams, fHelp);
     }
 
-    if (strCommaPlusCoinnd == "calcscore") {
+    if (strCommand == "calcscore") {
         UniValue newParams(UniValue::VARR);
-        // forward params but skip commapluscoinnd
+        // forward params but skip command
         for (unsigned int i = 1; i < params.size(); i++) {
             newParams.push_back(params[i]);
         }
@@ -394,22 +394,22 @@ UniValue masternodedebug (const UniValue& params, bool fHelp)
 
 UniValue startmasternode (const UniValue& params, bool fHelp)
 {
-    std::string strCommaPlusCoinnd;
+    std::string strCommand;
     if (params.size() >= 1) {
-        strCommaPlusCoinnd = params[0].get_str();
+        strCommand = params[0].get_str();
 
-        // Backwards compatibility with legacy 'masternode' super-commapluscoinnd forwarder
-        if (strCommaPlusCoinnd == "start") strCommaPlusCoinnd = "local";
-        if (strCommaPlusCoinnd == "start-alias") strCommaPlusCoinnd = "alias";
-        if (strCommaPlusCoinnd == "start-all") strCommaPlusCoinnd = "all";
-        if (strCommaPlusCoinnd == "start-many") strCommaPlusCoinnd = "many";
-        if (strCommaPlusCoinnd == "start-missing") strCommaPlusCoinnd = "missing";
-        if (strCommaPlusCoinnd == "start-disabled") strCommaPlusCoinnd = "disabled";
+        // Backwards compatibility with legacy 'masternode' super-command forwarder
+        if (strCommand == "start") strCommand = "local";
+        if (strCommand == "start-alias") strCommand = "alias";
+        if (strCommand == "start-all") strCommand = "all";
+        if (strCommand == "start-many") strCommand = "many";
+        if (strCommand == "start-missing") strCommand = "missing";
+        if (strCommand == "start-disabled") strCommand = "disabled";
     }
 
     if (fHelp || params.size() < 2 || params.size() > 3 ||
-        (params.size() == 2 && (strCommaPlusCoinnd != "local" && strCommaPlusCoinnd != "all" && strCommaPlusCoinnd != "many" && strCommaPlusCoinnd != "missing" && strCommaPlusCoinnd != "disabled")) ||
-        (params.size() == 3 && strCommaPlusCoinnd != "alias"))
+        (params.size() == 2 && (strCommand != "local" && strCommand != "all" && strCommand != "many" && strCommand != "missing" && strCommand != "disabled")) ||
+        (params.size() == 3 && strCommand != "alias"))
         throw runtime_error(
             "startmasternode \"local|all|many|missing|disabled|alias\" lockwallet ( \"alias\" )\n"
             "\nAttempts to start one or more masternode(s)\n"
@@ -439,7 +439,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
 
     bool fLock = (params[1].get_str() == "true" ? true : false);
 
-    if (strCommaPlusCoinnd == "local") {
+    if (strCommand == "local") {
         if (!fMasterNode) throw runtime_error("you must set masternode=1 in the configuration\n");
 
         if (pwalletMain->IsLocked())
@@ -455,14 +455,14 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
         return activeMasternode.GetStatus();
     }
 
-    if (strCommaPlusCoinnd == "all" || strCommaPlusCoinnd == "many" || strCommaPlusCoinnd == "missing" || strCommaPlusCoinnd == "disabled") {
+    if (strCommand == "all" || strCommand == "many" || strCommand == "missing" || strCommand == "disabled") {
         if (pwalletMain->IsLocked())
             throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
-        if ((strCommaPlusCoinnd == "missing" || strCommaPlusCoinnd == "disabled") &&
+        if ((strCommand == "missing" || strCommand == "disabled") &&
             (masternodeSync.RequestedMasternodeAssets <= MASTERNODE_SYNC_LIST ||
                 masternodeSync.RequestedMasternodeAssets == MASTERNODE_SYNC_FAILED)) {
-            throw runtime_error("You can't use this commapluscoinnd until masternode list is synced\n");
+            throw runtime_error("You can't use this command until masternode list is synced\n");
         }
 
         std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
@@ -482,8 +482,8 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
             CMasternode* pmn = mnodeman.Find(vin);
 
             if (pmn != NULL) {
-                if (strCommaPlusCoinnd == "missing") continue;
-                if (strCommaPlusCoinnd == "disabled" && pmn->IsEnabled()) continue;
+                if (strCommand == "missing") continue;
+                if (strCommand == "disabled" && pmn->IsEnabled()) continue;
             }
 
             bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), errorMessage);
@@ -512,7 +512,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
         return returnObj;
     }
 
-    if (strCommaPlusCoinnd == "alias") {
+    if (strCommand == "alias") {
         std::string alias = params[2].get_str();
 
         if (pwalletMain->IsLocked())

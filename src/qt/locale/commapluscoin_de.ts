@@ -566,7 +566,7 @@
         <translation>&amp;URI öffnen...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;Kommandozeilenoptionen</translation>
     </message>
     <message numerus="yes">
@@ -678,7 +678,7 @@
         <translation>Blockchain Betrachter Fenster</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Zeige die CommaPlusCoin-Core Hilfe, um mögliche CommaPlusCoin Kommando-Zeilen-Optionen anzuzeigen</translation>
     </message>
     <message>
@@ -1183,7 +1183,7 @@ Adresse: %4</translation>
         <translation>Über CommaPlusCoin Core</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>Kommandozeilenoptionen</translation>
     </message>
     <message>
@@ -1191,7 +1191,7 @@ Adresse: %4</translation>
         <translation>Benutzung:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>Kommandozeilenoptionen</translation>
     </message>
     <message>
@@ -1353,11 +1353,11 @@ Adresse: %4</translation>
         <translation>Sind Sie sicher, dass Sie alle Masternodes starten wollen?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>Befehl steht zur Zeit nicht zut verfügung</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>Sie können diesen Befehlt nicht ausführen, bevor der Masternode synchronisiert ist</translation>
     </message>
     <message>
@@ -1690,7 +1690,7 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Drittanbieter Transaktions URLs</translation>
     </message>
     <message>
-        <source>Active commapluscoinnd-line options that override above options:</source>
+        <source>Active command-line options that override above options:</source>
         <translation>Aktive Befehlszeilenoptionen, die über Optionen hinausgehen:</translation>
     </message>
     <message>
@@ -2224,7 +2224,7 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Umbau des Blockchain Index vom aktuellen blk000??.dat Datei.</translation>
     </message>
     <message>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
         <translation>Die unten aufgeführten Schaltflächen starten die Wallet mit Befehlszeilenoptionen, um die Wallet zu reparieren. Problemebehebung  mit beschädigten Blockhain-Dateien oder fehlenden/veralteten Transaktionen.</translation>
     </message>
     <message>
@@ -2256,7 +2256,7 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Nutze Pfeiltasten hoch und runter um alt Konsolenbefehle hervor zu holen, und &lt;b&gt;Ctrl-L&lt;/b&gt; um die Konsole zu reinigen.</translation>
     </message>
     <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</source>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Gebe &lt;b&gt;help&lt;/b&gt; ein, um eine Übersicht der verfügbaren Befehle zu erhalten.</translation>
     </message>
     <message>
@@ -3646,15 +3646,15 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Fehler: Diese Transaktion erfordert eine Transaktionsgebühr von mindestens %s wegen ihrer Menge, Komplexität oder Verwendung von kürzlich erhaltenen Mitteln!</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
         <translation>Befehl ausführen, wenn eine relevante Warnung empfangen wird oder wir einen wirklich langen Fork sehen (%s in cmd wird durch Benachrichtigungen ersetzt)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
         <translation>Befehl ausführen, wenn eine Wallet-Transaktion geändert wird (%s in cmd wird durch TxID ersetzt)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</source>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
         <translation>Befehl ausführen, wenn sich der beste Block ändert (%s in cmd wird durch Blockhash ersetzt)</translation>
     </message>
     <message>

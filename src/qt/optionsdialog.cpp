@@ -135,10 +135,10 @@ void OptionsDialog::setModel(OptionsModel* model)
         if (model->isRestartRequired())
             showRestartWarning(true);
 
-        QString strLabel = model->getOverriddenByCommaPlusCoinndLine();
+        QString strLabel = model->getOverriddenByCommandLine();
         if (strLabel.isEmpty())
             strLabel = tr("none");
-        ui->overriddenByCommaPlusCoinndLineLabel->setText(strLabel);
+        ui->overriddenByCommandLineLabel->setText(strLabel);
 
         mapper->setModel(model);
         setMapper();

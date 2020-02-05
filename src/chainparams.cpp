@@ -399,9 +399,9 @@ void SelectParams(CBaseChainParams::Network network)
     pCurrentParams = &Params(network);
 }
 
-bool SelectParamsFromCommaPlusCoinndLine()
+bool SelectParamsFromCommandLine()
 {
-    CBaseChainParams::Network network = NetworkIdFromCommaPlusCoinndLine();
+    CBaseChainParams::Network network = NetworkIdFromCommandLine();
     if (network == CBaseChainParams::MAX_NETWORK_TYPES)
         return false;
 

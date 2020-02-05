@@ -21,7 +21,7 @@ In the example above:
 * masternode 3 will donate 100% of its income
 
 
-The following new RPC commapluscoinnds are supported:
+The following new RPC commands are supported:
 * list-conf: shows the parsed masternode.conf
 * start-alias \<alias\>
 * stop-alias \<alias\>

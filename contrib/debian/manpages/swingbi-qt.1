@@ -4,7 +4,7 @@ commapluscoin-qt \- peer-to-peer network based digital currency
 .SH DESCRIPTION
 .SS "Usage:"
 .IP
-commapluscoin\-qt [commapluscoinnd\-line options]
+commapluscoin\-qt [command\-line options]
 .SH OPTIONS
 .TP
 \-?
@@ -95,7 +95,7 @@ Use UPnP to map the listening port (default: 1 when listening)
 Fee per KB to add to transactions you send
 .TP
 \fB\-server\fR
-Accept commapluscoinnd line and JSON\-RPC commapluscoinnds
+Accept command line and JSON\-RPC commands
 .TP
 \fB\-testnet\fR
 Use the test network
@@ -131,13 +131,13 @@ Allow JSON\-RPC connections from specified IP address
 Set the number of threads to service RPC calls (default: 4)
 .TP
 \fB\-blocknotify=\fR<cmd>
-Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)
+Execute command when the best block changes (%s in cmd is replaced by block hash)
 .TP
 \fB\-walletnotify=\fR<cmd>
-Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)
+Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)
 .TP
 \fB\-alertnotify=\fR<cmd>
-Execute commapluscoinnd when a relevant alert is received (%s in cmd is replaced by message)
+Execute command when a relevant alert is received (%s in cmd is replaced by message)
 .TP
 \fB\-upgradewallet\fR
 Upgrade wallet to latest format

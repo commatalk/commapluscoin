@@ -490,8 +490,8 @@
         <translation>Otwórz &amp;URL</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
-        <translation>&amp;Opcje CommaPlusCoinnd-line</translation>
+        <source>&amp;Command-line options</source>
+        <translation>&amp;Opcje Command-line</translation>
     </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
@@ -590,8 +590,8 @@
         <translation>Okno eksplorera bloków</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
-        <translation>Pokaż wiadomość pomocy rdzenia CommaPlusCoin, aby dostać listę możliwych opcji CommaPlusCoin commapluscoinnd-line</translation>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
+        <translation>Pokaż wiadomość pomocy rdzenia CommaPlusCoin, aby dostać listę możliwych opcji CommaPlusCoin command-line</translation>
     </message>
     <message>
         <source>CommaPlusCoin Core client</source>
@@ -1010,11 +1010,11 @@ MultiWysyłlka: %1</translation>
         <translation>Czy jesteś pewien, że chcesz wystartować wszystkie Masternode?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>Komenda nie dostępna w chwili obecnej</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>Nie możesz użyć tej komendy, dopóki masternode się nie zsynchronizują</translation>
     </message>
     <message>

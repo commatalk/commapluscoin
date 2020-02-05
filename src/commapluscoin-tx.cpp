@@ -39,7 +39,7 @@ static bool AppInitRawTx(int argc, char* argv[])
     ParseParameters(argc, argv);
 
     // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
-    if (!SelectParamsFromCommaPlusCoinndLine()) {
+    if (!SelectParamsFromCommandLine()) {
         fprintf(stderr, "Error: Invalid combination of -regtest and -testnet.\n");
         return false;
     }
@@ -50,8 +50,8 @@ static bool AppInitRawTx(int argc, char* argv[])
         // First part of help message is specific to this utility
         std::string strUsage = _("CommaPlusCoin Core commapluscoin-tx utility version") + " " + FormatFullVersion() + "\n\n" +
                                _("Usage:") + "\n" +
-                               "  commapluscoin-tx [options] <hex-tx> [commapluscoinnds]  " + _("Update hex-encoded commapluscoin transaction") + "\n" +
-                               "  commapluscoin-tx [options] -create [commapluscoinnds]   " + _("Create hex-encoded commapluscoin transaction") + "\n" +
+                               "  commapluscoin-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded commapluscoin transaction") + "\n" +
+                               "  commapluscoin-tx [options] -create [commands]   " + _("Create hex-encoded commapluscoin transaction") + "\n" +
                                "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -67,7 +67,7 @@ static bool AppInitRawTx(int argc, char* argv[])
         fprintf(stdout, "%s", strUsage.c_str());
 
 
-        strUsage = HelpMessageGroup(_("CommaPlusCoinnds:"));
+        strUsage = HelpMessageGroup(_("Commands:"));
         strUsage += HelpMessageOpt("delin=N", _("Delete input N from TX"));
         strUsage += HelpMessageOpt("delout=N", _("Delete output N from TX"));
         strUsage += HelpMessageOpt("in=TXID:VOUT", _("Add input to TX"));
@@ -76,13 +76,13 @@ static bool AppInitRawTx(int argc, char* argv[])
         strUsage += HelpMessageOpt("outaddr=VALUE:ADDRESS", _("Add address-based output to TX"));
         strUsage += HelpMessageOpt("outscript=VALUE:SCRIPT", _("Add raw script output to TX"));
         strUsage += HelpMessageOpt("sign=SIGHASH-FLAGS", _("Add zero or more signatures to transaction") + ". " +
-            _("This commapluscoinnd requires JSON registers:") +
+            _("This command requires JSON registers:") +
             _("prevtxs=JSON object") + ", " +
             _("privatekeys=JSON object") + ". " +
             _("See signrawtransaction docs for format of sighash flags, JSON objects."));
         fprintf(stdout, "%s", strUsage.c_str());
 
-        strUsage = HelpMessageGroup(_("Register CommaPlusCoinnds:"));
+        strUsage = HelpMessageGroup(_("Register Commands:"));
         strUsage += HelpMessageOpt("load=NAME:FILENAME", _("Load JSON file FILENAME into register NAME"));
         strUsage += HelpMessageOpt("set=NAME:JSON-STRING", _("Set register NAME to given JSON-STRING"));
         fprintf(stdout, "%s", strUsage.c_str());
@@ -448,36 +448,36 @@ static void MutateTxSign(CMutableTransaction& tx, const string& flagStr)
     tx = mergedTx;
 }
 
-static void MutateTx(CMutableTransaction& tx, const string& commapluscoinnd, const string& commapluscoinndVal)
+static void MutateTx(CMutableTransaction& tx, const string& command, const string& commandVal)
 {
-    if (commapluscoinnd == "nversion")
-        MutateTxVersion(tx, commapluscoinndVal);
-    else if (commapluscoinnd == "locktime")
-        MutateTxLocktime(tx, commapluscoinndVal);
+    if (command == "nversion")
+        MutateTxVersion(tx, commandVal);
+    else if (command == "locktime")
+        MutateTxLocktime(tx, commandVal);
 
-    else if (commapluscoinnd == "delin")
-        MutateTxDelInput(tx, commapluscoinndVal);
-    else if (commapluscoinnd == "in")
-        MutateTxAddInput(tx, commapluscoinndVal);
+    else if (command == "delin")
+        MutateTxDelInput(tx, commandVal);
+    else if (command == "in")
+        MutateTxAddInput(tx, commandVal);
 
-    else if (commapluscoinnd == "delout")
-        MutateTxDelOutput(tx, commapluscoinndVal);
-    else if (commapluscoinnd == "outaddr")
-        MutateTxAddOutAddr(tx, commapluscoinndVal);
-    else if (commapluscoinnd == "outscript")
-        MutateTxAddOutScript(tx, commapluscoinndVal);
+    else if (command == "delout")
+        MutateTxDelOutput(tx, commandVal);
+    else if (command == "outaddr")
+        MutateTxAddOutAddr(tx, commandVal);
+    else if (command == "outscript")
+        MutateTxAddOutScript(tx, commandVal);
 
-    else if (commapluscoinnd == "sign")
-        MutateTxSign(tx, commapluscoinndVal);
+    else if (command == "sign")
+        MutateTxSign(tx, commandVal);
 
-    else if (commapluscoinnd == "load")
-        RegisterLoad(commapluscoinndVal);
+    else if (command == "load")
+        RegisterLoad(commandVal);
 
-    else if (commapluscoinnd == "set")
-        RegisterSet(commapluscoinndVal);
+    else if (command == "set")
+        RegisterSet(commandVal);
 
     else
-        throw runtime_error("unknown commapluscoinnd");
+        throw runtime_error("unknown command");
 }
 
 static void OutputTxJSON(const CTransaction& tx)
@@ -533,7 +533,7 @@ static string readStdin()
     return ret;
 }
 
-static int CommaPlusCoinndLineRawTx(int argc, char* argv[])
+static int CommandLineRawTx(int argc, char* argv[])
 {
     string strPrint;
     int nRet = 0;
@@ -590,7 +590,7 @@ static int CommaPlusCoinndLineRawTx(int argc, char* argv[])
         strPrint = string("error: ") + e.what();
         nRet = EXIT_FAILURE;
     } catch (...) {
-        PrintExceptionContinue(NULL, "CommaPlusCoinndLineRawTx()");
+        PrintExceptionContinue(NULL, "CommandLineRawTx()");
         throw;
     }
 
@@ -617,11 +617,11 @@ int main(int argc, char* argv[])
 
     int ret = EXIT_FAILURE;
     try {
-        ret = CommaPlusCoinndLineRawTx(argc, argv);
+        ret = CommandLineRawTx(argc, argv);
     } catch (std::exception& e) {
-        PrintExceptionContinue(&e, "CommaPlusCoinndLineRawTx()");
+        PrintExceptionContinue(&e, "CommandLineRawTx()");
     } catch (...) {
-        PrintExceptionContinue(NULL, "CommaPlusCoinndLineRawTx()");
+        PrintExceptionContinue(NULL, "CommandLineRawTx()");
     }
     return ret;
 }

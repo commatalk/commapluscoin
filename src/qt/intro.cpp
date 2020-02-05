@@ -149,7 +149,7 @@ bool Intro::pickDataDirectory()
 {
     namespace fs = boost::filesystem;
     QSettings settings;
-    /* If data directory provided on commapluscoinnd line, no need to look at settings
+    /* If data directory provided on command line, no need to look at settings
        or show a picking dialog */
     if (!GetArg("-datadir", "").empty())
         return true;

@@ -1,5 +1,5 @@
 Each recipe consists of 3 main parts: defining identifiers, setting build
-variables, and defining build commapluscoinnds.
+variables, and defining build commands.
 
 The package "mylib" will be used here as an example
 
@@ -26,7 +26,7 @@ Each package is required to define at least these variables:
 These variables are optional:
 
     $(package)_build_subdir:
-    cd to this dir before running configure/build/stage commapluscoinnds.
+    cd to this dir before running configure/build/stage commands.
     
     $(package)_download_file:
     The file-name of the upstream source if it differs from how it should be
@@ -46,7 +46,7 @@ These variables are optional:
 
 ## Build Variables:
 After defining the main identifiers, build variables may be added or customized
-before running the build commapluscoinnds. They should be added to a function called
+before running the build commands. They should be added to a function called
 $(package)_set_vars. For example:
 
     define $(package)_set_vars
@@ -82,7 +82,7 @@ These variables may be set to override or append their default values.
     $(package)_config_opts
 
 The *_env variables are used to add environment variables to the respective
-commapluscoinnds.
+commands.
 
 Many variables respect a debug/release suffix as well, in order to use them for
 only the appropriate build config. For example:
@@ -95,12 +95,12 @@ These will be used in addition to the options that do not specify
 debug/release. All builds are considered to be release unless DEBUG=1 is set by
 the user. Other variables may be defined as needed.
 
-## Build commapluscoinnds:
+## Build commands:
 
   For each build, a unique build dir and staging dir are created. For example,
   `work/build/mylib/1.0-1adac830f6e` and `work/staging/mylib/1.0-1adac830f6e`.
 
-  The following build commapluscoinnds are available for each recipe:
+  The following build commands are available for each recipe:
 
     $(package)_fetch_cmds:
     Runs from: build dir
@@ -133,10 +133,10 @@ the user. Other variables may be defined as needed.
     $(1)_staging_dir: package's destination sysroot path
     $(1)_staging_prefix_dir: prefix path inside of the package's staging dir
     $(1)_extract_dir: path to the package's extracted sources
-    $(1)_build_dir: path where configure/build/stage commapluscoinnds will be run
+    $(1)_build_dir: path where configure/build/stage commands will be run
     $(1)_patch_dir: path where the package's patches (if any) are found
 
-Notes on build commapluscoinnds:
+Notes on build commands:
 
 For packages built with autotools, $($(package)_autoconf) can be used in the
 configure step to (usually) correctly configure automatically. Any

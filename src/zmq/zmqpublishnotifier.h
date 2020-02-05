@@ -18,11 +18,11 @@ public:
 
     /* send zmq multipart message
        parts:
-          * commapluscoinnd
+          * command
           * data
           * message sequence number
     */
-    bool SendMessage(const char *commapluscoinnd, const void* data, size_t size);
+    bool SendMessage(const char *command, const void* data, size_t size);
 
     bool Initialize(void *pcontext);
     void Shutdown();

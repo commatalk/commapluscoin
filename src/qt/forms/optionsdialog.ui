@@ -587,9 +587,9 @@ https://www.transifex.com/commapluscoin-project/commapluscoin-project-translatio
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_Bottom">
         <item>
-         <widget class="QLabel" name="overriddenByCommaPlusCoinndLineInfoLabel">
+         <widget class="QLabel" name="overriddenByCommandLineInfoLabel">
           <property name="text">
-           <string>Active commapluscoinnd-line options that override above options:</string>
+           <string>Active command-line options that override above options:</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -612,7 +612,7 @@ https://www.transifex.com/commapluscoin-project/commapluscoin-project-translatio
        </layout>
       </item>
       <item>
-       <widget class="QLabel" name="overriddenByCommaPlusCoinndLineLabel">
+       <widget class="QLabel" name="overriddenByCommandLineLabel">
         <property name="text">
          <string/>
         </property>

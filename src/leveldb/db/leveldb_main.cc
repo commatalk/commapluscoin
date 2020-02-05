@@ -21,7 +21,7 @@ class StdoutPrinter : public WritableFile {
   virtual Status Sync() { return Status::OK(); }
 };
 
-bool HandleDumpCommaPlusCoinnd(Env* env, char** files, int num) {
+bool HandleDumpCommand(Env* env, char** files, int num) {
   StdoutPrinter printer;
   bool ok = true;
   for (int i = 0; i < num; i++) {
@@ -40,7 +40,7 @@ bool HandleDumpCommaPlusCoinnd(Env* env, char** files, int num) {
 static void Usage() {
   fprintf(
       stderr,
-      "Usage: leveldbutil commapluscoinnd...\n"
+      "Usage: leveldbutil command...\n"
       "   dump files...         -- dump contents of specified files\n"
       );
 }
@@ -52,9 +52,9 @@ int main(int argc, char** argv) {
     Usage();
     ok = false;
   } else {
-    std::string commapluscoinnd = argv[1];
-    if (commapluscoinnd == "dump") {
-      ok = leveldb::HandleDumpCommaPlusCoinnd(env, argv+2, argc-2);
+    std::string command = argv[1];
+    if (command == "dump") {
+      ok = leveldb::HandleDumpCommand(env, argv+2, argc-2);
     } else {
       Usage();
       ok = false;

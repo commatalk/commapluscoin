@@ -9,11 +9,11 @@
 
 BOOST_AUTO_TEST_SUITE(torcontrol_tests)
 
-void CheckSplitTorReplyLine(std::string input, std::string commapluscoinnd, std::string args)
+void CheckSplitTorReplyLine(std::string input, std::string command, std::string args)
 {
     BOOST_TEST_MESSAGE(std::string("CheckSplitTorReplyLine(") + input + ")");
     auto ret = SplitTorReplyLine(input);
-    BOOST_CHECK_EQUAL(ret.first, commapluscoinnd);
+    BOOST_CHECK_EQUAL(ret.first, command);
     BOOST_CHECK_EQUAL(ret.second, args);
 }
 
@@ -40,14 +40,14 @@ BOOST_AUTO_TEST_CASE(util_SplitTorReplyLine)
         "AUTHCHALLENGE", "SERVERHASH=aaaa SERVERNONCE=bbbb");
 
     // Other valid inputs
-    CheckSplitTorReplyLine("COMMAPLUSCOINND", "COMMAPLUSCOINND", "");
-    CheckSplitTorReplyLine("COMMAPLUSCOINND SOME  ARGS", "COMMAPLUSCOINND", "SOME  ARGS");
+    CheckSplitTorReplyLine("COMMAND", "COMMAND", "");
+    CheckSplitTorReplyLine("COMMAND SOME  ARGS", "COMMAND", "SOME  ARGS");
 
     // These inputs are valid because PROTOCOLINFO accepts an OtherLine that is
     // just an OptArguments, which enables multiple spaces to be present
-    // between the commapluscoinnd and arguments.
-    CheckSplitTorReplyLine("COMMAPLUSCOINND  ARGS", "COMMAPLUSCOINND", " ARGS");
-    CheckSplitTorReplyLine("COMMAPLUSCOINND   EVEN+more  ARGS", "COMMAPLUSCOINND", "  EVEN+more  ARGS");
+    // between the command and arguments.
+    CheckSplitTorReplyLine("COMMAND  ARGS", "COMMAND", " ARGS");
+    CheckSplitTorReplyLine("COMMAND   EVEN+more  ARGS", "COMMAND", "  EVEN+more  ARGS");
 }
 
 void CheckParseTorReplyMapping(std::string input, std::map<std::string,std::string> expected)

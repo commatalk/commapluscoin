@@ -9,7 +9,7 @@ import socket, threading, Queue
 import traceback, sys
 
 ### Protocol constants
-class CommaPlusCoinnd:
+class Command:
     CONNECT = 0x01
 
 class AddressType:
@@ -38,17 +38,17 @@ class Socks5Configuration(object):
         self.unauth = False  # Support unauthenticated
         self.auth = False  # Support authentication
 
-class Socks5CommaPlusCoinnd(object):
-    '''Information about an incoming socks5 commapluscoinnd'''
+class Socks5Command(object):
+    '''Information about an incoming socks5 command'''
     def __init__(self, cmd, atyp, addr, port, username, password):
-        self.cmd = cmd # CommaPlusCoinnd (one of CommaPlusCoinnd.*)
+        self.cmd = cmd # Command (one of Command.*)
         self.atyp = atyp # Address type (one of AddressType.*)
         self.addr = addr # Address
         self.port = port # Port to connect to
         self.username = username
         self.password = password
     def __repr__(self):
-        return 'Socks5CommaPlusCoinnd(%s,%s,%s,%s,%s,%s)' % (self.cmd, self.atyp, self.addr, self.port, self.username, self.password)
+        return 'Socks5Command(%s,%s,%s,%s,%s,%s)' % (self.cmd, self.atyp, self.addr, self.port, self.username, self.password)
 
 class Socks5Connection(object):
     def __init__(self, serv, conn, peer):
@@ -95,8 +95,8 @@ class Socks5Connection(object):
             (ver,cmd,rsv,atyp) = recvall(self.conn, 4)
             if ver != 0x05:
                 raise IOError('Invalid socks version %i in connect request' % ver)
-            if cmd != CommaPlusCoinnd.CONNECT:
-                raise IOError('Unhandled commapluscoinnd %i in connect request' % cmd)
+            if cmd != Command.CONNECT:
+                raise IOError('Unhandled command %i in connect request' % cmd)
 
             if atyp == AddressType.IPV4:
                 addr = recvall(self.conn, 4)
@@ -113,7 +113,7 @@ class Socks5Connection(object):
             # Send dummy response
             self.conn.sendall(bytearray([0x05, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]))
 
-            cmdin = Socks5CommaPlusCoinnd(cmd, atyp, addr, port, username, password)
+            cmdin = Socks5Command(cmd, atyp, addr, port, username, password)
             self.serv.queue.put(cmdin)
             print('Proxy: ', cmdin)
             # Fall through to disconnect

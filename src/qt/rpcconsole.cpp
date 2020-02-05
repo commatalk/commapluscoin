@@ -64,23 +64,23 @@ const struct {
     {"misc", ":/icons/tx_inout"},
     {NULL, NULL}};
 
-/* Object for executing console RPC commapluscoinnds in a separate thread.
+/* Object for executing console RPC commands in a separate thread.
 */
 class RPCExecutor : public QObject
 {
     Q_OBJECT
 
 public slots:
-    void request(const QString& commapluscoinnd);
+    void request(const QString& command);
 
 signals:
-    void reply(int category, const QString& commapluscoinnd);
+    void reply(int category, const QString& command);
 };
 
 #include "rpcconsole.moc"
 
 /**
- * Split shell commapluscoinnd line into a list of arguments. Aims to emulate \c bash and friends.
+ * Split shell command line into a list of arguments. Aims to emulate \c bash and friends.
  *
  * - Arguments are delimited with whitespace
  * - Extra whitespace at the beginning and end and between arguments will be ignored
@@ -91,9 +91,9 @@ signals:
  *   - Within single quotes, no escaping is possible and no special interpretation takes place
  *
  * @param[out]   args        Parsed arguments will be appended to this list
- * @param[in]    strCommaPlusCoinnd  CommaPlusCoinnd line to split
+ * @param[in]    strCommand  Command line to split
  */
-bool parseCommaPlusCoinndLine(std::vector<std::string>& args, const std::string& strCommaPlusCoinnd)
+bool parseCommandLine(std::vector<std::string>& args, const std::string& strCommand)
 {
     enum CmdParseState {
         STATE_EATING_SPACES,
@@ -104,7 +104,7 @@ bool parseCommaPlusCoinndLine(std::vector<std::string>& args, const std::string&
         STATE_ESCAPE_DOUBLEQUOTED
     } state = STATE_EATING_SPACES;
     std::string curarg;
-    foreach (char ch, strCommaPlusCoinnd) {
+    foreach (char ch, strCommand) {
         switch (state) {
         case STATE_ARGUMENT:      // In or after argument
         case STATE_EATING_SPACES: // Handle runs of whitespace
@@ -177,10 +177,10 @@ bool parseCommaPlusCoinndLine(std::vector<std::string>& args, const std::string&
     }
 }
 
-void RPCExecutor::request(const QString& commapluscoinnd)
+void RPCExecutor::request(const QString& command)
 {
     std::vector<std::string> args;
-    if (!parseCommaPlusCoinndLine(args, commapluscoinnd.toStdString())) {
+    if (!parseCommandLine(args, command.toStdString())) {
         emit reply(RPCConsole::CMD_ERROR, QString("Parse error: unbalanced ' or \""));
         return;
     }
@@ -364,10 +364,10 @@ void RPCConsole::setClientModel(ClientModel* model)
 
         //Setup autocomplete and attach it
         QStringList wordList;
-        std::vector<std::string> commapluscoinndList = tableRPC.listCommaPlusCoinnds();
-        for (size_t i = 0; i < commapluscoinndList.size(); ++i)
+        std::vector<std::string> commandList = tableRPC.listCommands();
+        for (size_t i = 0; i < commandList.size(); ++i)
         {
-            wordList << commapluscoinndList[i].c_str();
+            wordList << commandList[i].c_str();
         }
 
         autoCompleter = new QCompleter(wordList, this);
@@ -452,10 +452,10 @@ void RPCConsole::walletResync()
     buildParameterlist(RESYNC);
 }
 
-/** Build commapluscoinnd-line parameter list for restart */
+/** Build command-line parameter list for restart */
 void RPCConsole::buildParameterlist(QString arg)
 {
-    // Get commapluscoinnd-line arguments and remove the application name
+    // Get command-line arguments and remove the application name
     QStringList args = QApplication::arguments();
     args.removeFirst();
 
@@ -467,10 +467,10 @@ void RPCConsole::buildParameterlist(QString arg)
     args.removeAll(UPGRADEWALLET);
     args.removeAll(REINDEX);
 
-    // Append repair parameter to commapluscoinnd line.
+    // Append repair parameter to command line.
     args.append(arg);
 
-    // Send commapluscoinnd-line arguments to BitcoinGUI::handleRestart()
+    // Send command-line arguments to BitcoinGUI::handleRestart()
     emit handleRestart(args);
 }
 
@@ -502,7 +502,7 @@ void RPCConsole::clear()
 
     message(CMD_REPLY, (tr("Welcome to the CommaPlusCoin RPC console.") + "<br>" +
                            tr("Use up and down arrows to navigate history, and <b>Ctrl-L</b> to clear screen.") + "<br>" +
-                           tr("Type <b>help</b> for an overview of available commapluscoinnds.")),
+                           tr("Type <b>help</b> for an overview of available commands.")),
         true);
 }
 
@@ -561,9 +561,9 @@ void RPCConsole::on_lineEdit_returnPressed()
     if (!cmd.isEmpty()) {
         message(CMD_REQUEST, cmd);
         emit cmdRequest(cmd);
-        // Remove commapluscoinnd, if already in history
+        // Remove command, if already in history
         history.removeOne(cmd);
-        // Append commapluscoinnd to history
+        // Append command to history
         history.append(cmd);
         // Enforce maximum history size
         while (history.size() > CONSOLE_HISTORY)

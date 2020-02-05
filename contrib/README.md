@@ -2,7 +2,7 @@ Wallet Tools
 ---------------------
 
 ### [BitRPC](/contrib/bitrpc) ###
-Allows for sending of all standard Bitcoin commapluscoinnds via RPC rather than as commapluscoinnd line args.
+Allows for sending of all standard Bitcoin commands via RPC rather than as command line args.
 
 ### [SpendFrom](/contrib/spendfrom) ###
 

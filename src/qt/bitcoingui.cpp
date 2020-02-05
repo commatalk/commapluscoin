@@ -255,7 +255,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     connect(labelEncryptionIcon, SIGNAL(clicked()), walletFrame, SLOT(toggleLockWallet()));
     // connect(labelAutoMintIcon, SIGNAL(clicked()), this, SLOT(optionsClicked()));
 
-    // Get restart commapluscoinnd-line parameters and handle restart
+    // Get restart command-line parameters and handle restart
     connect(rpcConsole, SIGNAL(handleRestart(QStringList)), this, SLOT(handleRestart(QStringList)));
 
     // prevents an open debug window from becoming stuck/unusable on client shutdown
@@ -841,7 +841,7 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
 
 
@@ -1336,7 +1336,7 @@ void BitcoinGUI::unsubscribeFromCoreSignals()
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
 }
 
-/** Get restart commapluscoinnd-line parameters and request restart */
+/** Get restart command-line parameters and request restart */
 void BitcoinGUI::handleRestart(QStringList args)
 {
     if (!ShutdownRequested())

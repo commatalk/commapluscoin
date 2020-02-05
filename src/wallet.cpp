@@ -750,7 +750,7 @@ bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet)
 
         if (!strCmd.empty()) {
             boost::replace_all(strCmd, "%s", wtxIn.GetHash().GetHex());
-            boost::thread t(runCommaPlusCoinnd, strCmd); // thread runs free
+            boost::thread t(runCommand, strCmd); // thread runs free
         }
     }
     return true;
@@ -1058,14 +1058,14 @@ bool CWalletTx::InMempool() const
     return false;
 }
 
-void CWalletTx::RelayWalletTransaction(std::string strCommaPlusCoinnd)
+void CWalletTx::RelayWalletTransaction(std::string strCommand)
 {
     if (!IsCoinBase()) {
         if (GetDepthInMainChain() == 0) {
             uint256 hash = GetHash();
             LogPrintf("Relaying wtx %s\n", hash.ToString());
 
-            if (strCommaPlusCoinnd == "ix") {
+            if (strCommand == "ix") {
                 mapTxLockReq.insert(make_pair(hash, (CTransaction) * this));
                 CreateNewLock(((CTransaction) * this));
                 RelayTransactionLockReq((CTransaction) * this, true);
@@ -2017,7 +2017,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 /**
  * Call after CreateTransaction unless you want to abort
  */
-bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std::string strCommaPlusCoinnd)
+bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std::string strCommand)
 {
     {
         LOCK2(cs_main, cs_wallet);
@@ -2059,7 +2059,7 @@ bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std:
             LogPrintf("CommitTransaction() : Error: Transaction not valid\n");
             return false;
         }
-        wtxNew.RelayWalletTransaction(strCommaPlusCoinnd);
+        wtxNew.RelayWalletTransaction(strCommand);
     }
     return true;
 }

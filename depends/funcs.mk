@@ -75,7 +75,7 @@ $(1)_postprocessed=$$($(1)_staging_prefix_dir)/.stamp_postprocessed
 $(1)_download_path_fixed=$(subst :,\:,$$($(1)_download_path))
 
 
-#default commapluscoinnds
+#default commands
 $(1)_fetch_cmds ?= $(call fetch_file,$(1),$(subst \:,:,$$($(1)_download_path_fixed)),$$($(1)_download_file),$($(1)_file_name),$($(1)_sha256_hash))
 $(1)_extract_cmds ?= mkdir -p $$($(1)_extract_dir) && echo "$$($(1)_sha256_hash)  $$($(1)_source)" > $$($(1)_extract_dir)/.$$($(1)_file_name).hash &&  $(build_SHA256SUM) -c $$($(1)_extract_dir)/.$$($(1)_file_name).hash && tar --strip-components=1 -xf $$($(1)_source)
 $(1)_preprocess_cmds ?=

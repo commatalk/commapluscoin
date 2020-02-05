@@ -247,7 +247,7 @@ void CAlert::Notify(const std::string& strMessage, bool fThread)
     boost::replace_all(strCmd, "%s", safeStatus);
 
     if (fThread)
-        boost::thread t(runCommaPlusCoinnd, strCmd); // thread runs free
+        boost::thread t(runCommand, strCmd); // thread runs free
     else
-        runCommaPlusCoinnd(strCmd);
+        runCommand(strCmd);
 }

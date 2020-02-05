@@ -27,7 +27,7 @@ Output: `464a0eb70ea91c94295214df48c47baa72b3876cfb658744aaf863c7b5bf1ff0` - Thi
 
 In this transaction we prepare collateral for "_cool-project_". This proposal will pay _1200_ CPC, _12_ times over the course of a year totaling _24000_ CPC.
 
-**Warning -- if you change any fields within this commapluscoinnd, the collateral transaction will become invalid.**
+**Warning -- if you change any fields within this command, the collateral transaction will become invalid.**
 
 Submit proposal to network
 ------------------------
@@ -141,11 +141,11 @@ Get paid
 When block `1000000` is reached you'll receive a payment for `1200` CPC.
 
 
-RPC CommaPlusCoinnds
+RPC Commands
 ------------------------
 
-The following new RPC commapluscoinnds are supported:
-- mnbudget "commapluscoinnd"... ( "passphrase" )
+The following new RPC commands are supported:
+- mnbudget "command"... ( "passphrase" )
  * prepare            - Prepare proposal for network by signing and creating tx
  * submit             - Submit proposal for network
  * vote-many          - Vote on a CommaPlusCoin initiative
@@ -157,7 +157,7 @@ The following new RPC commapluscoinnds are supported:
  * projection         - Show the projection of which proposals will be paid the next cycle
  * check              - Scan proposals and remove invalid
 
-- mnfinalbudget "commapluscoinnd"... ( "passphrase" )
+- mnfinalbudget "command"... ( "passphrase" )
  * vote-many   - Vote on a finalized budget
  * vote        - Vote on a finalized budget
  * show        - Show existing finalized budgets

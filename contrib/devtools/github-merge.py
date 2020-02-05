@@ -153,7 +153,7 @@ def main():
     testcmd = git_config_get('githubmerge.testcmd')
     signingkey = git_config_get('user.signingkey')
     if repo is None:
-        print("ERROR: No repository configured. Use this commapluscoinnd to set:", file=stderr)
+        print("ERROR: No repository configured. Use this command to set:", file=stderr)
         print("git config githubmerge.repository <owner>/<repo>", file=stderr)
         exit(1)
     if signingkey is None:
@@ -163,7 +163,7 @@ def main():
 
     host_repo = host+":"+repo # shortcut for push/pull target
 
-    # Extract settings from commapluscoinnd line
+    # Extract settings from command line
     args = parse_arguments()
     pull = str(args.pull[0])
 
@@ -173,7 +173,7 @@ def main():
         exit(1)
     title = info['title']
     # precedence order for destination branch argument:
-    #   - commapluscoinnd line argument
+    #   - command line argument
     #   - githubmerge.branch setting
     #   - base branch for pull (as retrieved from github)
     #   - 'master'
@@ -260,7 +260,7 @@ def main():
         subprocess.check_call([GIT,'log','--graph','--topo-order','--pretty=format:'+COMMIT_FORMAT,base_branch+'..'+head_branch])
         print()
 
-        # Run test commapluscoinnd if configured.
+        # Run test command if configured.
         if testcmd:
             if subprocess.call(testcmd,shell=True):
                 print("ERROR: Running %s failed." % testcmd,file=stderr)

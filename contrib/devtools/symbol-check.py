@@ -75,7 +75,7 @@ class CPPFilt(object):
     '''
     Demangle C++ symbol names.
 
-    Use a pipe to the 'c++filt' commapluscoinnd.
+    Use a pipe to the 'c++filt' command.
     '''
     def __init__(self):
         self.proc = subprocess.Popen(CPPFILT_CMD, stdin=subprocess.PIPE, stdout=subprocess.PIPE)

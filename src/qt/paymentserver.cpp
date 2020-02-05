@@ -183,10 +183,10 @@ void PaymentServer::LoadRootCAs(X509_STORE* _store)
 // and the items in savedPaymentRequest will be handled
 // when uiReady() is called.
 //
-// Warning: ipcSendCommaPlusCoinndLine() is called early in init,
+// Warning: ipcSendCommandLine() is called early in init,
 // so don't use "emit message()", but "QMessageBox::"!
 //
-void PaymentServer::ipcParseCommaPlusCoinndLine(int argc, char* argv[])
+void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
 {
     for (int i = 1; i < argc; i++) {
         QString arg(argv[i]);
@@ -226,7 +226,7 @@ void PaymentServer::ipcParseCommaPlusCoinndLine(int argc, char* argv[])
         } else {
             // Printing to debug.log is about the best we can do here, the
             // GUI hasn't started yet so we can't pop up a message box.
-            qWarning() << "PaymentServer::ipcSendCommaPlusCoinndLine : Payment request file does not exist: " << arg;
+            qWarning() << "PaymentServer::ipcSendCommandLine : Payment request file does not exist: " << arg;
         }
     }
 }
@@ -237,7 +237,7 @@ void PaymentServer::ipcParseCommaPlusCoinndLine(int argc, char* argv[])
 // and the items in savedPaymentRequest will be handled
 // when uiReady() is called.
 //
-bool PaymentServer::ipcSendCommaPlusCoinndLine()
+bool PaymentServer::ipcSendCommandLine()
 {
     bool fResult = false;
     foreach (const QString& r, savedPaymentRequests) {
@@ -453,7 +453,7 @@ void PaymentServer::handleURIConnection()
 }
 
 //
-// Warning: readPaymentRequestFromFile() is used in ipcSendCommaPlusCoinndLine()
+// Warning: readPaymentRequestFromFile() is used in ipcSendCommandLine()
 // so don't use "emit message()", but "QMessageBox::"!
 //
 bool PaymentServer::readPaymentRequestFromFile(const QString& filename, PaymentRequestPlus& request)

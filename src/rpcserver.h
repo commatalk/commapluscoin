@@ -84,7 +84,7 @@ extern CNetAddr BoostAsioToCNetAddr(boost::asio::ip::address address);
 
 typedef UniValue(*rpcfn_type)(const UniValue& params, bool fHelp);
 
-class CRPCCommaPlusCoinnd
+class CRPCCommand
 {
 public:
     std::string category;
@@ -96,16 +96,16 @@ public:
 };
 
 /**
- * CommaPlusCoin RPC commapluscoinnd dispatcher.
+ * CommaPlusCoin RPC command dispatcher.
  */
 class CRPCTable
 {
 private:
-    std::map<std::string, const CRPCCommaPlusCoinnd*> mapCommaPlusCoinnds;
+    std::map<std::string, const CRPCCommand*> mapCommands;
 
 public:
     CRPCTable();
-    const CRPCCommaPlusCoinnd* operator[](std::string name) const;
+    const CRPCCommand* operator[](std::string name) const;
     std::string help(std::string name) const;
 
     /**
@@ -118,10 +118,10 @@ public:
     UniValue execute(const std::string &method, const UniValue &params) const;
 
     /**
-    * Returns a list of registered commapluscoinnds
-    * @returns List of registered commapluscoinnds.
+    * Returns a list of registered commands
+    * @returns List of registered commands.
     */
-    std::vector<std::string> listCommaPlusCoinnds() const;
+    std::vector<std::string> listCommands() const;
 };
 
 extern const CRPCTable tableRPC;

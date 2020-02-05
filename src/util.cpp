@@ -510,7 +510,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it) {
-        // Don't overwrite existing settings so commapluscoinnd line settings override commapluscoin.conf
+        // Don't overwrite existing settings so command line settings override commapluscoin.conf
         string strKey = string("-") + it->string_key;
         string strValue = it->value[0];
         InterpretNegativeSetting(strKey, strValue);
@@ -726,11 +726,11 @@ boost::filesystem::path GetTempPath()
 #endif
 }
 
-void runCommaPlusCoinnd(std::string strCommaPlusCoinnd)
+void runCommand(std::string strCommand)
 {
-    int nErr = ::system(strCommaPlusCoinnd.c_str());
+    int nErr = ::system(strCommand.c_str());
     if (nErr)
-        LogPrintf("runCommaPlusCoinnd error: system(%s) returned %d\n", strCommaPlusCoinnd, nErr);
+        LogPrintf("runCommand error: system(%s) returned %d\n", strCommand, nErr);
 }
 
 void RenameThread(const char* name)

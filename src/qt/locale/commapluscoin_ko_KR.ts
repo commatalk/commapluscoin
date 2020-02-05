@@ -566,7 +566,7 @@
         <translation>&amp;URI 열기...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>&amp;명령행 옵션</translation>
     </message>
     <message>
@@ -674,7 +674,7 @@
         <translation>블록 탐색 창</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>CommaPlusCoin Core 도움말 메세지를 표시하여 사용 가능한 CommaPlusCoin 명령행 옵션 목록 표시</translation>
     </message>
     <message>
@@ -1152,7 +1152,7 @@ Address: %4
         <translation>CommaPlusCoin Core 정보</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
+        <source>Command-line options</source>
         <translation>명령행 옵션</translation>
     </message>
     <message>
@@ -1160,7 +1160,7 @@ Address: %4
         <translation>사용:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
+        <source>command-line options</source>
         <translation>명령행 옵션</translation>
     </message>
     <message>
@@ -1322,11 +1322,11 @@ Address: %4
         <translation>모든 마스터노드를 시작하시겠습니까?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
+        <source>Command is not available right now</source>
         <translation>현재 명령을 사용할 수 없습니다.</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
+        <source>You can't use this command until masternode list is synced</source>
         <translation>마스터노드 목록이 동기화 될 때까지이 명령을 사용할 수 없습니다.</translation>
     </message>
     <message>
@@ -1663,7 +1663,7 @@ Please check the address and try again.</source>
         <translation>서드파티 트랜잭션 URL</translation>
     </message>
     <message>
-        <source>Active commapluscoinnd-line options that override above options:</source>
+        <source>Active command-line options that override above options:</source>
         <translation>위의 옵션을 무시하는 활성 명령행 옵션:</translation>
     </message>
     <message>
@@ -2182,7 +2182,7 @@ Please check the address and try again.</source>
         <translation>현재 blk000??.dat로 부터 블록체인 인덱스 재작성</translation>
     </message>
     <message>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
         <translation>아래 버튼들은 지갑을 고치기 위한 명령어 옵션들로 실행시 지갑을 재시작합니다, 손상된 블록체인 파일 또는 누락되었거나 오래된 트랜잭션들에 대한 문제를 해결합니다.</translation>
     </message>
     <message>
@@ -2214,7 +2214,7 @@ Please check the address and try again.</source>
         <translation>위 아래 화살표를 사용하여 기록을 탐색하고 &lt;b&gt;Ctrl-L&lt;/b&gt; 화면을 지웁니다.</translation>
     </message>
     <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</source>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>사용가능한 명령을 보려면 &lt;b&gt;help&lt;/b&gt;를 입력하십시오.</translation>
     </message>
     <message>
@@ -3597,15 +3597,15 @@ Please check the address and try again.</source>
         <translation>오류 : 지원하지 않는 인수 -socks가 발견되었습니다. SOCKS 버전 설정은 더 이상 가능하지 않으며 SOCKS5 프록시만 지원합니다.</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
         <translation>관련된 경고 또는 포크가 길어질 경우 명령을 실행하십시오. (명령 내 %s 는 메시지로 대체 되었습니다)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
         <translation>지갑 트랜잭션이 변경될 경우 명령을 실행하십시오.(명령 내 %s 는 TxID로 대체 되었습니다)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</source>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
         <translation>최고 블록이 변경될 경우 명령을 실행하십시오 (명령 내 %s 는 블록 해시로 대체 되었습니다)</translation>
     </message>
     <message>
@@ -3797,8 +3797,8 @@ rpcpassword=%s
         <translation>(메인넷 일경우 34520)</translation>
     </message>
     <message>
-        <source>Accept commapluscoinnd line and JSON-RPC commapluscoinnds</source>
-        <translation> commapluscoinnd line 과 JSON-RPC 적용</translation>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation> command line 과 JSON-RPC 적용</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
@@ -4373,7 +4373,7 @@ rpcpassword=%s
         <translation>주기적으로 지갑을 플러쉬하는 스레드를 실행합니다 (기본값: %u)</translation>
     </message>
     <message>
-        <source>Run in the background as a daemon and accept commapluscoinnds</source>
+        <source>Run in the background as a daemon and accept commands</source>
         <translation>백그라운드에서 상주하며 실행하고 명령을 받습니다</translation>
     </message>
     <message>

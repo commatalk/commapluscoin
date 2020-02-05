@@ -163,24 +163,24 @@ bool ParseBool(const UniValue& o, string strKey)
  * Note: This interface may still be subject to change.
  */
 
-string CRPCTable::help(string strCommaPlusCoinnd) const
+string CRPCTable::help(string strCommand) const
 {
     string strRet;
     string category;
     set<rpcfn_type> setDone;
-    vector<pair<string, const CRPCCommaPlusCoinnd*> > vCommaPlusCoinnds;
+    vector<pair<string, const CRPCCommand*> > vCommands;
 
-    for (map<string, const CRPCCommaPlusCoinnd*>::const_iterator mi = mapCommaPlusCoinnds.begin(); mi != mapCommaPlusCoinnds.end(); ++mi)
-        vCommaPlusCoinnds.push_back(make_pair(mi->second->category + mi->first, mi->second));
-    sort(vCommaPlusCoinnds.begin(), vCommaPlusCoinnds.end());
+    for (map<string, const CRPCCommand*>::const_iterator mi = mapCommands.begin(); mi != mapCommands.end(); ++mi)
+        vCommands.push_back(make_pair(mi->second->category + mi->first, mi->second));
+    sort(vCommands.begin(), vCommands.end());
 
-    BOOST_FOREACH (const PAIRTYPE(string, const CRPCCommaPlusCoinnd*) & commapluscoinnd, vCommaPlusCoinnds) {
-        const CRPCCommaPlusCoinnd* pcmd = commapluscoinnd.second;
+    BOOST_FOREACH (const PAIRTYPE(string, const CRPCCommand*) & command, vCommands) {
+        const CRPCCommand* pcmd = command.second;
         string strMethod = pcmd->name;
         // We already filter duplicates, but these deprecated screw up the sort order
         if (strMethod.find("label") != string::npos)
             continue;
-        if ((strCommaPlusCoinnd != "" || pcmd->category == "hidden") && strMethod != strCommaPlusCoinnd)
+        if ((strCommand != "" || pcmd->category == "hidden") && strMethod != strCommand)
             continue;
 #ifdef ENABLE_WALLET
         if (pcmd->reqWallet && !pwalletMain)
@@ -195,7 +195,7 @@ string CRPCTable::help(string strCommaPlusCoinnd) const
         } catch (std::exception& e) {
             // Help text is returned in an exception
             string strHelp = string(e.what());
-            if (strCommaPlusCoinnd == "") {
+            if (strCommand == "") {
                 if (strHelp.find('\n') != string::npos)
                     strHelp = strHelp.substr(0, strHelp.find('\n'));
 
@@ -212,7 +212,7 @@ string CRPCTable::help(string strCommaPlusCoinnd) const
         }
     }
     if (strRet == "")
-        strRet = strprintf("help: unknown commapluscoinnd: %s\n", strCommaPlusCoinnd);
+        strRet = strprintf("help: unknown command: %s\n", strCommand);
     strRet = strRet.substr(0, strRet.size() - 1);
     return strRet;
 }
@@ -221,18 +221,18 @@ UniValue help(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)
         throw runtime_error(
-            "help ( \"commapluscoinnd\" )\n"
-            "\nList all commapluscoinnds, or get help for a specified commapluscoinnd.\n"
+            "help ( \"command\" )\n"
+            "\nList all commands, or get help for a specified command.\n"
             "\nArguments:\n"
-            "1. \"commapluscoinnd\"     (string, optional) The commapluscoinnd to get help on\n"
+            "1. \"command\"     (string, optional) The command to get help on\n"
             "\nResult:\n"
             "\"text\"     (string) The help text\n");
 
-    string strCommaPlusCoinnd;
+    string strCommand;
     if (params.size() > 0)
-        strCommaPlusCoinnd = params[0].get_str();
+        strCommand = params[0].get_str();
 
-    return tableRPC.help(strCommaPlusCoinnd);
+    return tableRPC.help(strCommand);
 }
 
 
@@ -252,7 +252,7 @@ UniValue stop(const UniValue& params, bool fHelp)
 /**
  * Call Table
  */
-static const CRPCCommaPlusCoinnd vRPCCommaPlusCoinnds[] =
+static const CRPCCommand vRPCCommands[] =
     {
         //  category              name                      actor (function)         okSafeMode threadSafe reqWallet
         //  --------------------- ------------------------  -----------------------  ---------- ---------- ---------
@@ -410,18 +410,18 @@ static const CRPCCommaPlusCoinnd vRPCCommaPlusCoinnds[] =
 CRPCTable::CRPCTable()
 {
     unsigned int vcidx;
-    for (vcidx = 0; vcidx < (sizeof(vRPCCommaPlusCoinnds) / sizeof(vRPCCommaPlusCoinnds[0])); vcidx++) {
-        const CRPCCommaPlusCoinnd* pcmd;
+    for (vcidx = 0; vcidx < (sizeof(vRPCCommands) / sizeof(vRPCCommands[0])); vcidx++) {
+        const CRPCCommand* pcmd;
 
-        pcmd = &vRPCCommaPlusCoinnds[vcidx];
-        mapCommaPlusCoinnds[pcmd->name] = pcmd;
+        pcmd = &vRPCCommands[vcidx];
+        mapCommands[pcmd->name] = pcmd;
     }
 }
 
-const CRPCCommaPlusCoinnd* CRPCTable::operator[](string name) const
+const CRPCCommand* CRPCTable::operator[](string name) const
 {
-    map<string, const CRPCCommaPlusCoinnd*>::const_iterator it = mapCommaPlusCoinnds.find(name);
-    if (it == mapCommaPlusCoinnds.end())
+    map<string, const CRPCCommand*>::const_iterator it = mapCommands.find(name);
+    if (it == mapCommands.end())
         return NULL;
     return (*it).second;
 }
@@ -1001,7 +1001,7 @@ void ServiceConnection(AcceptedConnection* conn)
 UniValue CRPCTable::execute(const std::string &strMethod, const UniValue &params) const
 {
     // Find method
-    const CRPCCommaPlusCoinnd* pcmd = tableRPC[strMethod];
+    const CRPCCommand* pcmd = tableRPC[strMethod];
     if (!pcmd)
         throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Method not found");
 #ifdef ENABLE_WALLET
@@ -1057,15 +1057,15 @@ UniValue CRPCTable::execute(const std::string &strMethod, const UniValue &params
     }
 }
 
-std::vector<std::string> CRPCTable::listCommaPlusCoinnds() const
+std::vector<std::string> CRPCTable::listCommands() const
 {
-    std::vector<std::string> commapluscoinndList;
-    typedef std::map<std::string, const CRPCCommaPlusCoinnd*> commapluscoinndMap;
+    std::vector<std::string> commandList;
+    typedef std::map<std::string, const CRPCCommand*> commandMap;
 
-    std::transform( mapCommaPlusCoinnds.begin(), mapCommaPlusCoinnds.end(),
-                   std::back_inserter(commapluscoinndList),
-                   boost::bind(&commapluscoinndMap::value_type::first,_1) );
-    return commapluscoinndList;
+    std::transform( mapCommands.begin(), mapCommands.end(),
+                   std::back_inserter(commandList),
+                   boost::bind(&commandMap::value_type::first,_1) );
+    return commandList;
 }
 
 std::string HelpExampleCli(string methodname, string args)

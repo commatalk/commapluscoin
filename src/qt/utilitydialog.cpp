@@ -65,9 +65,9 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
         ui->aboutMessage->setWordWrap(true);
         ui->helpMessage->setVisible(false);
     } else {
-        setWindowTitle(tr("CommaPlusCoinnd-line options"));
+        setWindowTitle(tr("Command-line options"));
         QString header = tr("Usage:") + "\n" +
-                         "  commapluscoin-qt [" + tr("commapluscoinnd-line options") + "]                     " + "\n";
+                         "  commapluscoin-qt [" + tr("command-line options") + "]                     " + "\n";
         QTextCursor cursor(ui->helpMessage->document());
         cursor.insertText(version);
         cursor.insertBlock();

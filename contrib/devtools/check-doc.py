@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 '''
-This checks if all commapluscoinnd line args are documented.
+This checks if all command line args are documented.
 Return value is 0 to indicate no error.
 Author: @MarcoFalke
 '''

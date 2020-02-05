@@ -566,7 +566,7 @@
         <translation>Otvoriť URI...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
+        <source>&amp;Command-line options</source>
         <translation>Možnosti príkazového riadku</translation>
     </message>
     <message>
@@ -674,7 +674,7 @@
         <translation>Okno blockchain prehliadača</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
         <translation>Zobraziť pomocnú správu programu CommaPlusCoin Core a získajte zoznam možností príkazového riadka CommaPlusCoin</translation>
     </message>
     <message>

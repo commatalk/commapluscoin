@@ -946,12 +946,12 @@ Adresse : %4
         <translation>Êtes-vous sûr de vouloir lancer TOUTES les masternodes?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
-        <translation>La commapluscoinnde n'est pas disponible actuellement</translation>
+        <source>Command is not available right now</source>
+        <translation>La commande n'est pas disponible actuellement</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
-        <translation>Vous ne pouvez pas utiliser cette commapluscoinnde tant que la liste de masternodes n'est pas synchronisée</translation>
+        <source>You can't use this command until masternode list is synced</source>
+        <translation>Vous ne pouvez pas utiliser cette commande tant que la liste de masternodes n'est pas synchronisée</translation>
     </message>
     </context>
 <context>

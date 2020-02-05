@@ -214,7 +214,7 @@ public:
     void Sync(CNode* node, uint256 nProp, bool fPartial = false);
 
     void Calculate();
-    void ProcessMessage(CNode* pfrom, std::string& strCommaPlusCoinnd, CDataStream& vRecv);
+    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
     void NewBlock();
     CBudgetProposal* FindProposal(const std::string& strProposalName);
     CBudgetProposal* FindProposal(uint256 nHash);

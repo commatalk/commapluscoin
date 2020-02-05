@@ -58,11 +58,11 @@ void LoadSporksFromDB()
     }
 }
 
-void ProcessSpork(CNode* pfrom, std::string& strCommaPlusCoinnd, CDataStream& vRecv)
+void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if (fLiteMode) return; //disable all masternode related functionality
 
-    if (strCommaPlusCoinnd == "spork") {
+    if (strCommand == "spork") {
         //LogPrintf("ProcessSpork::spork\n");
         CDataStream vMsg(vRecv);
         CSporkMessage spork;
@@ -99,7 +99,7 @@ void ProcessSpork(CNode* pfrom, std::string& strCommaPlusCoinnd, CDataStream& vR
         // CPC: add to spork database.
         pSporkDB->WriteSpork(spork.nSporkID, spork);
     }
-    if (strCommaPlusCoinnd == "getsporks") {
+    if (strCommand == "getsporks") {
         std::map<int, CSporkMessage>::iterator it = mapSporksActive.begin();
 
         while (it != mapSporksActive.end()) {

@@ -33,7 +33,7 @@ std::string HelpMessageCli()
     strUsage += HelpMessageOpt("-testnet", _("Use the test network"));
     strUsage += HelpMessageOpt("-regtest", _("Enter regression test mode, which uses a special chain in which blocks can be "
                                              "solved instantly. This is intended for regression testing tools and app development."));
-    strUsage += HelpMessageOpt("-rpcconnect=<ip>", strprintf(_("Send commapluscoinnds to node running on <ip> (default: %s)"), "127.0.0.1"));
+    strUsage += HelpMessageOpt("-rpcconnect=<ip>", strprintf(_("Send commands to node running on <ip> (default: %s)"), "127.0.0.1"));
     strUsage += HelpMessageOpt("-rpcport=<port>", strprintf(_("Connect to JSON-RPC on <port> (default: %u or testnet: %u)"), 34521, 1345202));
     strUsage += HelpMessageOpt("-rpcwait", _("Wait for RPC server to start"));
     strUsage += HelpMessageOpt("-rpcuser=<user>", _("Username for JSON-RPC connections"));
@@ -72,9 +72,9 @@ static bool AppInitRPC(int argc, char* argv[])
         std::string strUsage = _("CommaPlusCoin Core RPC client version") + " " + FormatFullVersion() + "\n";
         if (!mapArgs.count("-version")) {
             strUsage += "\n" + _("Usage:") + "\n" +
-                        "  commapluscoin-cli [options] <commapluscoinnd> [params]  " + _("Send commapluscoinnd to CommaPlusCoin Core") + "\n" +
-                        "  commapluscoin-cli [options] help                " + _("List commapluscoinnds") + "\n" +
-                        "  commapluscoin-cli [options] help <commapluscoinnd>      " + _("Get help for a commapluscoinnd") + "\n";
+                        "  commapluscoin-cli [options] <command> [params]  " + _("Send command to CommaPlusCoin Core") + "\n" +
+                        "  commapluscoin-cli [options] help                " + _("List commands") + "\n" +
+                        "  commapluscoin-cli [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessageCli();
         }
@@ -93,7 +93,7 @@ static bool AppInitRPC(int argc, char* argv[])
         return false;
     }
     // Check for -testnet or -regtest parameter (BaseParams() calls are only valid after this clause)
-    if (!SelectBaseParamsFromCommaPlusCoinndLine()) {
+    if (!SelectBaseParamsFromCommandLine()) {
         fprintf(stderr, "Error: Invalid combination of -regtest and -testnet.\n");
         return false;
     }
@@ -166,7 +166,7 @@ UniValue CallRPC(const string& strMethod, const UniValue& params)
     return reply;
 }
 
-int CommaPlusCoinndLineRPC(int argc, char* argv[])
+int CommandLineRPC(int argc, char* argv[])
 {
     string strPrint;
     int nRet = 0;
@@ -227,7 +227,7 @@ int CommaPlusCoinndLineRPC(int argc, char* argv[])
         strPrint = string("error: ") + e.what();
         nRet = EXIT_FAILURE;
     } catch (...) {
-        PrintExceptionContinue(NULL, "CommaPlusCoinndLineRPC()");
+        PrintExceptionContinue(NULL, "CommandLineRPC()");
         throw;
     }
 
@@ -254,11 +254,11 @@ int main(int argc, char* argv[])
 
     int ret = EXIT_FAILURE;
     try {
-        ret = CommaPlusCoinndLineRPC(argc, argv);
+        ret = CommandLineRPC(argc, argv);
     } catch (std::exception& e) {
-        PrintExceptionContinue(&e, "CommaPlusCoinndLineRPC()");
+        PrintExceptionContinue(&e, "CommandLineRPC()");
     } catch (...) {
-        PrintExceptionContinue(NULL, "CommaPlusCoinndLineRPC()");
+        PrintExceptionContinue(NULL, "CommandLineRPC()");
     }
     return ret;
 }

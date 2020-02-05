@@ -27,7 +27,7 @@
 // After startup, receivedURL() happens as usual.
 //
 // This class has one more feature: a static
-// method that finds URIs passed in the commapluscoinnd line
+// method that finds URIs passed in the command line
 // and, if a server is running in another process,
 // sends them to the server.
 //
@@ -60,16 +60,16 @@ class PaymentServer : public QObject
     Q_OBJECT
 
 public:
-    // Parse URIs on commapluscoinnd line
+    // Parse URIs on command line
     // Returns false on error
-    static void ipcParseCommaPlusCoinndLine(int argc, char* argv[]);
+    static void ipcParseCommandLine(int argc, char* argv[]);
 
-    // Returns true if there were URIs on the commapluscoinnd line
+    // Returns true if there were URIs on the command line
     // which were successfully sent to an already-running
     // process.
     // Note: if a payment request is given, SelectParams(MAIN/TESTNET)
     // will be called so we startup in the right mode.
-    static bool ipcSendCommaPlusCoinndLine();
+    static bool ipcSendCommandLine();
 
     // parent should be QApplication object
     PaymentServer(QObject* parent, bool startLocalServer = true);

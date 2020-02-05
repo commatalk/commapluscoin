@@ -9,7 +9,7 @@ We use automated scripts to help extract translations in both Qt, and non-Qt sou
 
 `src/qt/locale/commapluscoin_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `commapluscoin_en.ts`.
 
-To automatically regenerate the `commapluscoin_en.ts` file, run the following commapluscoinnds:
+To automatically regenerate the `commapluscoin_en.ts` file, run the following commands:
 ```sh
 cd src/
 make translate
@@ -25,7 +25,7 @@ QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
 ### Creating a pull-request
 For general PRs, you shouldn’t include any updates to the translation source files. They will be updated periodically, primarily around pre-releases, allowing time for any new phrases to be translated before public releases. This is also important in avoiding translation related merge conflicts.
 
-To create the pull-request, use the following commapluscoinnds:
+To create the pull-request, use the following commands:
 ```
 git add src/qt/commapluscoinstrings.cpp src/qt/locale/commapluscoin_en.ts
 git commit

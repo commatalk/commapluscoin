@@ -72,13 +72,13 @@ QT_TRANSLATE_NOOP("commapluscoin-core", ""
 "Error: Unsupported argument -socks found. Setting SOCKS version isn't "
 "possible anymore, only SOCKS5 proxies are supported."),
 QT_TRANSLATE_NOOP("commapluscoin-core", ""
-"Execute commapluscoinnd when a relevant alert is received or we see a really long "
+"Execute command when a relevant alert is received or we see a really long "
 "fork (%s in cmd is replaced by message)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", ""
-"Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by "
+"Execute command when a wallet transaction changes (%s in cmd is replaced by "
 "TxID)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", ""
-"Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block "
+"Execute command when the best block changes (%s in cmd is replaced by block "
 "hash)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", ""
 "Fees (in CPC/Kb) smaller than this are considered zero fee for relaying "
@@ -208,7 +208,7 @@ QT_TRANSLATE_NOOP("commapluscoin-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "(default: 1)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "(must be 34520 for mainnet)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "<category> can be:"),
-QT_TRANSLATE_NOOP("commapluscoin-core", "Accept commapluscoinnd line and JSON-RPC commapluscoinnds"),
+QT_TRANSLATE_NOOP("commapluscoin-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Accept public REST requests (default: %u)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Acceptable ciphers (default: %s)"),
@@ -359,7 +359,7 @@ QT_TRANSLATE_NOOP("commapluscoin-core", "Relay non-P2SH multisig (default: %u)")
 QT_TRANSLATE_NOOP("commapluscoin-core", "Rescan the block chain for missing wallet transactions"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Rescanning..."),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Run a thread to flush wallet periodically (default: %u)"),
-QT_TRANSLATE_NOOP("commapluscoin-core", "Run in the background as a daemon and accept commapluscoinnds"),
+QT_TRANSLATE_NOOP("commapluscoin-core", "Run in the background as a daemon and accept commands"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Send transactions as zero-fee transactions if possible (default: %u)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Server certificate file (default: %s)"),
 QT_TRANSLATE_NOOP("commapluscoin-core", "Server private key (default: %s)"),

@@ -201,7 +201,7 @@ After the VM has booted you can connect to it using SSH, and files can be copied
 Connect to `localhost`, port `22222` (or the port configured when installing the VM).
 On Windows you can use putty[1] and WinSCP[2].
 
-For example to connect as `root` from a Linux commapluscoinnd prompt use
+For example to connect as `root` from a Linux command prompt use
 
     $ ssh root@localhost -p 22222
     The authenticity of host '[localhost]:22222 ([127.0.0.1]:22222)' can't be established.
@@ -223,7 +223,7 @@ Setting up Debian for gitian building
 In this section we will be setting up the Debian installation for Gitian building.
 
 First we need to log in as `root` to set up dependencies and make sure that our
-user can use the sudo commapluscoinnd. Type/paste the following in the terminal:
+user can use the sudo command. Type/paste the following in the terminal:
 
 ```bash
 apt-get install make git ruby sudo apt-cacher-ng qemu-utils debootstrap lxc python-cheetah parted kpartx bridge-utils

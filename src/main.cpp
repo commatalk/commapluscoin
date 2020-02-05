@@ -2566,7 +2566,7 @@ bool DisconnectBlocksAndReprocess(int blocks)
 
     CValidationState state;
 
-    LogPrintf("DisconnectBlocksAndReprocess: Got commapluscoinnd to replay %d blocks\n", blocks);
+    LogPrintf("DisconnectBlocksAndReprocess: Got command to replay %d blocks\n", blocks);
     for (int i = 0; i <= blocks; i++)
         DisconnectTip(state);
 
@@ -4549,7 +4549,7 @@ void static ProcessGetData(CNode* pfrom)
                     LOCK(cs_mapRelay);
                     map<CInv, CDataStream>::iterator mi = mapRelay.find(inv);
                     if (mi != mapRelay.end()) {
-                        pfrom->PushMessage(inv.GetCommaPlusCoinnd(), (*mi).second);
+                        pfrom->PushMessage(inv.GetCommand(), (*mi).second);
                         pushed = true;
                     }
                 }
@@ -4688,20 +4688,20 @@ void static ProcessGetData(CNode* pfrom)
 }
 
 bool fRequestedSporksIDB = false;
-bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream& vRecv, int64_t nTimeReceived)
+bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, int64_t nTimeReceived)
 {
     RandAddSeedPerfmon();
     if (fDebug)
-         LogPrint("net", "received: %s (%u bytes) peer=%d\n", SanitizeString(strCommaPlusCoinnd), vRecv.size(), pfrom->id);
+         LogPrint("net", "received: %s (%u bytes) peer=%d\n", SanitizeString(strCommand), vRecv.size(), pfrom->id);
     if (mapArgs.count("-dropmessagestest") && GetRand(atoi(mapArgs["-dropmessagestest"])) == 0) {
         LogPrintf("dropmessagestest DROPPING RECV MESSAGE\n");
         return true;
     }
 
-    if (strCommaPlusCoinnd == "version") {
+    if (strCommand == "version") {
         // Each connection can only send one version message
         if (pfrom->nVersion != 0) {
-            pfrom->PushMessage("reject", strCommaPlusCoinnd, REJECT_DUPLICATE, string("Duplicate version message"));
+            pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, string("Duplicate version message"));
             LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 1);
             return false;
@@ -4723,7 +4723,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->DisconnectOldProtocol(ActiveProtocol(), strCommaPlusCoinnd))
+        if (pfrom->DisconnectOldProtocol(ActiveProtocol(), strCommand))
             return false;
 
         if (pfrom->nVersion == 10300)
@@ -4822,7 +4822,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "verack") {
+    else if (strCommand == "verack") {
         pfrom->SetRecvVersion(min(pfrom->nVersion, PROTOCOL_VERSION));
 
         // Mark this node as currently connected, so we update its timestamp later.
@@ -4833,7 +4833,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "addr") {
+    else if (strCommand == "addr") {
         vector<CAddress> vAddr;
         vRecv >> vAddr;
 
@@ -4895,7 +4895,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "inv") {
+    else if (strCommand == "inv") {
         vector<CInv> vInv;
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
@@ -4943,7 +4943,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "getdata") {
+    else if (strCommand == "getdata") {
         vector<CInv> vInv;
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
@@ -4962,7 +4962,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "getblocks" || strCommaPlusCoinnd == "getheaders") {
+    else if (strCommand == "getblocks" || strCommand == "getheaders") {
         CBlockLocator locator;
         uint256 hashStop;
         vRecv >> locator >> hashStop;
@@ -4994,7 +4994,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "headers" && Params().HeadersFirstSyncingActive()) {
+    else if (strCommand == "headers" && Params().HeadersFirstSyncingActive()) {
         CBlockLocator locator;
         uint256 hashStop;
         vRecv >> locator >> hashStop;
@@ -5032,7 +5032,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "tx") {
+    else if (strCommand == "tx") {
         vector<uint256> vWorkQueue;
         vector<uint256> vEraseQueue;
         CTransaction tx;
@@ -5129,7 +5129,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
             LogPrint("mempool", "%s from peer=%d %s was not accepted into the memory pool: %s\n", tx.GetHash().ToString(),
                 pfrom->id, pfrom->cleanSubVer,
                 state.GetRejectReason());
-            pfrom->PushMessage("reject", strCommaPlusCoinnd, state.GetRejectCode(),
+            pfrom->PushMessage("reject", strCommand, state.GetRejectCode(),
                 state.GetRejectReason().substr(0, MAX_REJECT_MESSAGE_LENGTH), inv.hash);
             if (nDoS > 0)
                 Misbehaving(pfrom->GetId(), nDoS);
@@ -5137,7 +5137,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "headers" && Params().HeadersFirstSyncingActive() && !fImporting && !fReindex) // Ignore headers received while importing
+    else if (strCommand == "headers" && Params().HeadersFirstSyncingActive() && !fImporting && !fReindex) // Ignore headers received while importing
     {
         std::vector<CBlockHeader> headers;
 
@@ -5195,7 +5195,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
         CheckBlockIndex();
     }
 
-    else if (strCommaPlusCoinnd == "block" && !fImporting && !fReindex) // Ignore blocks received while importing
+    else if (strCommand == "block" && !fImporting && !fReindex) // Ignore blocks received while importing
     {
         CBlock block;
         vRecv >> block;
@@ -5222,7 +5222,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
                 ProcessNewBlock(state, pfrom, &block);
                 int nDoS;
                 if(state.IsInvalid(nDoS)) {
-                    pfrom->PushMessage("reject", strCommaPlusCoinnd, state.GetRejectCode(),
+                    pfrom->PushMessage("reject", strCommand, state.GetRejectCode(),
                                        state.GetRejectReason().substr(0, MAX_REJECT_MESSAGE_LENGTH), inv.hash);
                     if(nDoS > 0) {
                         TRY_LOCK(cs_main, lockMain);
@@ -5230,7 +5230,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
                     }
                 }
                 //disconnect this node if its old protocol version
-                pfrom->DisconnectOldProtocol(ActiveProtocol(), strCommaPlusCoinnd);
+                pfrom->DisconnectOldProtocol(ActiveProtocol(), strCommand);
             } else {
                 LogPrint("net", "%s : Already processed block %s, skipping ProcessNewBlock()\n", __func__, block.GetHash().GetHex());
             }
@@ -5243,7 +5243,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     // to users' AddrMan and later request them by sending getaddr messages.
     // Making users (which are behind NAT and can only make outgoing connections) ignore
     // getaddr message mitigates the attack.
-    else if ((strCommaPlusCoinnd == "getaddr") && (pfrom->fInbound)) {
+    else if ((strCommand == "getaddr") && (pfrom->fInbound)) {
         pfrom->vAddrToSend.clear();
         vector<CAddress> vAddr = addrman.GetAddr();
         BOOST_FOREACH (const CAddress& addr, vAddr)
@@ -5251,7 +5251,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "mempool") {
+    else if (strCommand == "mempool") {
         LOCK2(cs_main, pfrom->cs_filter);
 
         std::vector<uint256> vtxid;
@@ -5275,7 +5275,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "ping") {
+    else if (strCommand == "ping") {
         if (pfrom->nVersion > BIP0031_VERSION) {
             uint64_t nonce = 0;
             vRecv >> nonce;
@@ -5295,7 +5295,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "pong") {
+    else if (strCommand == "pong") {
         int64_t pingUsecEnd = nTimeReceived;
         uint64_t nonce = 0;
         size_t nAvail = vRecv.in_avail();
@@ -5351,7 +5351,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (fAlerts && strCommaPlusCoinnd == "alert") {
+    else if (fAlerts && strCommand == "alert") {
         CAlert alert;
         vRecv >> alert;
 
@@ -5378,14 +5378,14 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
     else if (!(nLocalServices & NODE_BLOOM) &&
-             (strCommaPlusCoinnd == "filterload" ||
-                 strCommaPlusCoinnd == "filteradd" ||
-                 strCommaPlusCoinnd == "filterclear")) {
-        LogPrintf("bloom message=%s\n", strCommaPlusCoinnd);
+             (strCommand == "filterload" ||
+                 strCommand == "filteradd" ||
+                 strCommand == "filterclear")) {
+        LogPrintf("bloom message=%s\n", strCommand);
         Misbehaving(pfrom->GetId(), 100);
     }
 
-    else if (strCommaPlusCoinnd == "filterload") {
+    else if (strCommand == "filterload") {
         CBloomFilter filter;
         vRecv >> filter;
 
@@ -5402,7 +5402,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "filteradd") {
+    else if (strCommand == "filteradd") {
         vector<unsigned char> vData;
         vRecv >> vData;
 
@@ -5420,7 +5420,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "filterclear") {
+    else if (strCommand == "filterclear") {
         LOCK(pfrom->cs_filter);
         delete pfrom->pfilter;
         pfrom->pfilter = new CBloomFilter();
@@ -5428,13 +5428,13 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
     }
 
 
-    else if (strCommaPlusCoinnd == "reject") {
+    else if (strCommand == "reject") {
         if (fDebug) {
             try {
                 string strMsg;
                 unsigned char ccode;
                 string strReason;
-                vRecv >> LIMITED_STRING(strMsg, CMessageHeader::COMMAPLUSCOINND_SIZE) >> ccode >> LIMITED_STRING(strReason, MAX_REJECT_MESSAGE_LENGTH);
+                vRecv >> LIMITED_STRING(strMsg, CMessageHeader::COMMAND_SIZE) >> ccode >> LIMITED_STRING(strReason, MAX_REJECT_MESSAGE_LENGTH);
 
                 ostringstream ss;
                 ss << strMsg << " code " << itostr(ccode) << ": " << strReason;
@@ -5452,12 +5452,12 @@ bool static ProcessMessage(CNode* pfrom, string strCommaPlusCoinnd, CDataStream&
         }
     } else {
         //probably one the extensions
-        mnodeman.ProcessMessage(pfrom, strCommaPlusCoinnd, vRecv);
-        budget.ProcessMessage(pfrom, strCommaPlusCoinnd, vRecv);
-        masternodePayments.ProcessMessageMasternodePayments(pfrom, strCommaPlusCoinnd, vRecv);
-        ProcessMessageSwiftTX(pfrom, strCommaPlusCoinnd, vRecv);
-        ProcessSpork(pfrom, strCommaPlusCoinnd, vRecv);
-        masternodeSync.ProcessMessage(pfrom, strCommaPlusCoinnd, vRecv);
+        mnodeman.ProcessMessage(pfrom, strCommand, vRecv);
+        budget.ProcessMessage(pfrom, strCommand, vRecv);
+        masternodePayments.ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
+        ProcessMessageSwiftTX(pfrom, strCommand, vRecv);
+        ProcessSpork(pfrom, strCommand, vRecv);
+        masternodeSync.ProcessMessage(pfrom, strCommand, vRecv);
     }
 
 
@@ -5495,7 +5495,7 @@ bool ProcessMessages(CNode* pfrom)
     //
     // Message format
     //  (4) message start
-    //  (12) commapluscoinnd
+    //  (12) command
     //  (4) size
     //  (4) checksum
     //  (x) data
@@ -5531,7 +5531,7 @@ bool ProcessMessages(CNode* pfrom)
 
         // Scan for message start
         if (memcmp(msg.hdr.pchMessageStart, Params().MessageStart(), MESSAGE_START_SIZE) != 0) {
-            LogPrintf("PROCESSMESSAGE: INVALID MESSAGESTART %s peer=%d\n", SanitizeString(msg.hdr.GetCommaPlusCoinnd()), pfrom->id);
+            LogPrintf("PROCESSMESSAGE: INVALID MESSAGESTART %s peer=%d\n", SanitizeString(msg.hdr.GetCommand()), pfrom->id);
             fOk = false;
             break;
         }
@@ -5539,10 +5539,10 @@ bool ProcessMessages(CNode* pfrom)
         // Read header
         CMessageHeader& hdr = msg.hdr;
         if (!hdr.IsValid()) {
-            LogPrintf("PROCESSMESSAGE: ERRORS IN HEADER %s peer=%d\n", SanitizeString(hdr.GetCommaPlusCoinnd()), pfrom->id);
+            LogPrintf("PROCESSMESSAGE: ERRORS IN HEADER %s peer=%d\n", SanitizeString(hdr.GetCommand()), pfrom->id);
             continue;
         }
-        string strCommaPlusCoinnd = hdr.GetCommaPlusCoinnd();
+        string strCommand = hdr.GetCommand();
 
         // Message size
         unsigned int nMessageSize = hdr.nMessageSize;
@@ -5554,23 +5554,23 @@ bool ProcessMessages(CNode* pfrom)
         memcpy(&nChecksum, &hash, sizeof(nChecksum));
         if (nChecksum != hdr.nChecksum) {
             LogPrintf("ProcessMessages(%s, %u bytes): CHECKSUM ERROR nChecksum=%08x hdr.nChecksum=%08x\n",
-                SanitizeString(strCommaPlusCoinnd), nMessageSize, nChecksum, hdr.nChecksum);
+                SanitizeString(strCommand), nMessageSize, nChecksum, hdr.nChecksum);
             continue;
         }
 
         // Process message
         bool fRet = false;
         try {
-            fRet = ProcessMessage(pfrom, strCommaPlusCoinnd, vRecv, msg.nTime);
+            fRet = ProcessMessage(pfrom, strCommand, vRecv, msg.nTime);
             boost::this_thread::interruption_point();
         } catch (std::ios_base::failure& e) {
-            pfrom->PushMessage("reject", strCommaPlusCoinnd, REJECT_MALFORMED, string("error parsing message"));
+            pfrom->PushMessage("reject", strCommand, REJECT_MALFORMED, string("error parsing message"));
             if (strstr(e.what(), "end of data")) {
                 // Allow exceptions from under-length message on vRecv
-                LogPrintf("ProcessMessages(%s, %u bytes): Exception '%s' caught, normally caused by a message being shorter than its stated length\n", SanitizeString(strCommaPlusCoinnd), nMessageSize, e.what());
+                LogPrintf("ProcessMessages(%s, %u bytes): Exception '%s' caught, normally caused by a message being shorter than its stated length\n", SanitizeString(strCommand), nMessageSize, e.what());
             } else if (strstr(e.what(), "size too large")) {
                 // Allow exceptions from over-long size
-                LogPrintf("ProcessMessages(%s, %u bytes): Exception '%s' caught\n", SanitizeString(strCommaPlusCoinnd), nMessageSize, e.what());
+                LogPrintf("ProcessMessages(%s, %u bytes): Exception '%s' caught\n", SanitizeString(strCommand), nMessageSize, e.what());
             } else {
                 PrintExceptionContinue(&e, "ProcessMessages()");
             }
@@ -5583,7 +5583,7 @@ bool ProcessMessages(CNode* pfrom)
         }
 
         if (!fRet)
-            LogPrintf("ProcessMessage(%s, %u bytes) FAILED peer=%d\n", SanitizeString(strCommaPlusCoinnd), nMessageSize, pfrom->id);
+            LogPrintf("ProcessMessage(%s, %u bytes) FAILED peer=%d\n", SanitizeString(strCommand), nMessageSize, pfrom->id);
 
         break;
     }
@@ -5626,7 +5626,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
                 pto->nPingNonceSent = nonce;
                 pto->PushMessage("ping", nonce);
             } else {
-                // Peer is too old to support ping commapluscoinnd with nonce, pong will never arrive.
+                // Peer is too old to support ping command with nonce, pong will never arrive.
                 pto->nPingNonceSent = 0;
                 pto->PushMessage("ping");
             }

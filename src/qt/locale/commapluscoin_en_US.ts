@@ -566,8 +566,8 @@
         <translation>Open &amp;URI...</translation>
     </message>
     <message>
-        <source>&amp;CommaPlusCoinnd-line options</source>
-        <translation>&amp;CommaPlusCoinnd-line options</translation>
+        <source>&amp;Command-line options</source>
+        <translation>&amp;Command-line options</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n blocks of transaction history.</source>
@@ -678,8 +678,8 @@
         <translation>Block explorer window</translation>
     </message>
     <message>
-        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</source>
-        <translation>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin commapluscoinnd-line options</translation>
+        <source>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</source>
+        <translation>Show the CommaPlusCoin Core help message to get a list with possible CommaPlusCoin command-line options</translation>
     </message>
     <message>
         <source>CommaPlusCoin Core client</source>
@@ -1180,16 +1180,16 @@ Address: %4
         <translation>About CommaPlusCoin Core</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd-line options</source>
-        <translation>CommaPlusCoinnd-line options</translation>
+        <source>Command-line options</source>
+        <translation>Command-line options</translation>
     </message>
     <message>
         <source>Usage:</source>
         <translation>Usage:</translation>
     </message>
     <message>
-        <source>commapluscoinnd-line options</source>
-        <translation>commapluscoinnd-line options</translation>
+        <source>command-line options</source>
+        <translation>command-line options</translation>
     </message>
     <message>
         <source>UI Options:</source>
@@ -1350,12 +1350,12 @@ Address: %4
         <translation>Are you sure you want to start ALL masternodes?</translation>
     </message>
     <message>
-        <source>CommaPlusCoinnd is not available right now</source>
-        <translation>CommaPlusCoinnd is not available right now</translation>
+        <source>Command is not available right now</source>
+        <translation>Command is not available right now</translation>
     </message>
     <message>
-        <source>You can't use this commapluscoinnd until masternode list is synced</source>
-        <translation>You can't use this commapluscoinnd until masternode list is synced</translation>
+        <source>You can't use this command until masternode list is synced</source>
+        <translation>You can't use this command until masternode list is synced</translation>
     </message>
     <message>
         <source>Confirm missing masternodes start</source>
@@ -1691,8 +1691,8 @@ Please check the address and try again.</translation>
         <translation>Third party transaction URLs</translation>
     </message>
     <message>
-        <source>Active commapluscoinnd-line options that override above options:</source>
-        <translation>Active commapluscoinnd-line options that override above options:</translation>
+        <source>Active command-line options that override above options:</source>
+        <translation>Active command-line options that override above options:</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
@@ -2221,8 +2221,8 @@ Please check the address and try again.</translation>
         <translation>Rebuild block chain index from current blk000??.dat files.</translation>
     </message>
     <message>
-        <source>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
-        <translation>The buttons below will restart the wallet with commapluscoinnd-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</translation>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <translation>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</translation>
     </message>
     <message>
         <source>Wallet repair options.</source>
@@ -2253,8 +2253,8 @@ Please check the address and try again.</translation>
         <translation>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</translation>
     </message>
     <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</source>
-        <translation>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commapluscoinnds.</translation>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
+        <translation>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -3663,16 +3663,16 @@ Please check the address and try again.</translation>
         <translation>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Execute commapluscoinnd when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</translation>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Execute commapluscoinnd when a wallet transaction changes (%s in cmd is replaced by TxID)</translation>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</translation>
     </message>
     <message>
-        <source>Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Execute commapluscoinnd when the best block changes (%s in cmd is replaced by block hash)</translation>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>Execute command when the best block changes (%s in cmd is replaced by block hash)</translation>
     </message>
     <message>
         <source>Fees (in CPC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
@@ -3863,8 +3863,8 @@ for example: alertnotify=echo %%s | mail -s "CommaPlusCoin Alert" admin@foo.com
         <translation>(must be 34520 for mainnet)</translation>
     </message>
     <message>
-        <source>Accept commapluscoinnd line and JSON-RPC commapluscoinnds</source>
-        <translation>Accept commapluscoinnd line and JSON-RPC commapluscoinnds</translation>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation>Accept command line and JSON-RPC commands</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
@@ -4439,8 +4439,8 @@ for example: alertnotify=echo %%s | mail -s "CommaPlusCoin Alert" admin@foo.com
         <translation>Run a thread to flush wallet periodically (default: %u)</translation>
     </message>
     <message>
-        <source>Run in the background as a daemon and accept commapluscoinnds</source>
-        <translation>Run in the background as a daemon and accept commapluscoinnds</translation>
+        <source>Run in the background as a daemon and accept commands</source>
+        <translation>Run in the background as a daemon and accept commands</translation>
     </message>
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>

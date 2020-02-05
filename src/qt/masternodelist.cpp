@@ -110,7 +110,7 @@ void MasternodeList::StartAlias(std::string strAlias)
     updateMyNodeList(true);
 }
 
-void MasternodeList::StartAll(std::string strCommaPlusCoinnd)
+void MasternodeList::StartAll(std::string strCommand)
 {
     int nCountSuccessful = 0;
     int nCountFailed = 0;
@@ -127,7 +127,7 @@ void MasternodeList::StartAll(std::string strCommaPlusCoinnd)
         CTxIn txin = CTxIn(uint256S(mne.getTxHash()), uint32_t(nIndex));
         CMasternode* pmn = mnodeman.Find(txin);
 
-        if (strCommaPlusCoinnd == "start-missing" && pmn) continue;
+        if (strCommand == "start-missing" && pmn) continue;
 
         bool fSuccess = CMasternodeBroadcast::Create(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strError, mnb);
 
@@ -280,8 +280,8 @@ void MasternodeList::on_startAllButton_clicked()
 void MasternodeList::on_startMissingButton_clicked()
 {
     if (!masternodeSync.IsMasternodeListSynced()) {
-        QMessageBox::critical(this, tr("CommaPlusCoinnd is not available right now"),
-            tr("You can't use this commapluscoinnd until masternode list is synced"));
+        QMessageBox::critical(this, tr("Command is not available right now"),
+            tr("You can't use this command until masternode list is synced"));
         return;
     }
 

@@ -53,9 +53,9 @@ For example, to describe a function use:
  */
 bool function(int arg1, const char *arg2)
 ```
-A complete list of `@xxx` commapluscoinnds can be found at http://www.stack.nl/~dimitri/doxygen/manual/commapluscoinnds.html.
+A complete list of `@xxx` commands can be found at http://www.stack.nl/~dimitri/doxygen/manual/commands.html.
 As Doxygen recognizes the comments by the delimiters (`/**` and `*/` in this case), you don't
-*need* to provide any commapluscoinnds for a comment to be valid; just a description text is fine.
+*need* to provide any commands for a comment to be valid; just a description text is fine.
 
 To describe a class use the same construct above the class definition:
 ```c++
@@ -110,7 +110,7 @@ CXXFLAGS="-g -ggdb -O0" or whatever debug flags you need.
 If the code is behaving strangely, take a look in the debug.log file in the data directory;
 error and debugging messages are written there.
 
-The -debug=... commapluscoinnd-line option controls debugging; running with just -debug or -debug=1 will turn
+The -debug=... command-line option controls debugging; running with just -debug or -debug=1 will turn
 on all categories (and give you a very large debug.log file).
 
 The Qt code routes qDebug() output to debug.log under category "qt": run with -debug=qt
@@ -192,7 +192,7 @@ to do this is thus to create your local gitignore. Add this to `~/.gitconfig`:
         excludesfile = /home/.../.gitignore_global
 ```
 
-(alternatively, type the commapluscoinnd `git config --global core.excludesfile ~/.gitignore_global`
+(alternatively, type the command `git config --global core.excludesfile ~/.gitignore_global`
 on a terminal)
 
 Then put your favourite tool's temporary filenames in that file, e.g.

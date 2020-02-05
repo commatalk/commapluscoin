@@ -107,7 +107,7 @@ static QString GetLangTerritory()
     QString lang_territory_qsettings = settings.value("language", "").toString();
     if (!lang_territory_qsettings.isEmpty())
         lang_territory = lang_territory_qsettings;
-    // 3) -lang commapluscoinnd line argument
+    // 3) -lang command line argument
     lang_territory = QString::fromStdString(GetArg("-lang", lang_territory.toStdString()));
     return lang_territory;
 }
@@ -484,7 +484,7 @@ void BitcoinApplication::initializeResult(int retval)
         emit splashFinished(window);
 
 #ifdef ENABLE_WALLET
-        // Now that initialization/startup is done, process any commapluscoinnd-line
+        // Now that initialization/startup is done, process any command-line
         // commapluscoin: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
             window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
@@ -524,8 +524,8 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    /// 1. Parse commapluscoinnd-line options. These take precedence over anything else.
-    // CommaPlusCoinnd-line options take precedence:
+    /// 1. Parse command-line options. These take precedence over anything else.
+    // Command-line options take precedence:
     ParseParameters(argc, argv);
 
 // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
@@ -572,7 +572,7 @@ int main(int argc, char* argv[])
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
     uiInterface.Translate.connect(Translate);
 
-    // Show help message immediately after parsing commapluscoinnd-line options (for "-lang") and setting locale,
+    // Show help message immediately after parsing command-line options (for "-lang") and setting locale,
     // but before showing splash screen.
     if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
         HelpMessageDialog help(NULL, mapArgs.count("-version"));
@@ -607,13 +607,13 @@ int main(int argc, char* argv[])
     // - Needs to be done before createOptionsModel
 
     // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
-    if (!SelectParamsFromCommaPlusCoinndLine()) {
+    if (!SelectParamsFromCommandLine()) {
         QMessageBox::critical(0, QObject::tr("CommaPlusCoin Core"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
         return 1;
     }
 #ifdef ENABLE_WALLET
-    // Parse URIs on commapluscoinnd line -- this can affect Params()
-    PaymentServer::ipcParseCommaPlusCoinndLine(argc, argv);
+    // Parse URIs on command line -- this can affect Params()
+    PaymentServer::ipcParseCommandLine(argc, argv);
 #endif
 
     QScopedPointer<const NetworkStyle> networkStyle(NetworkStyle::instantiate(QString::fromStdString(Params().NetworkIDString())));
@@ -638,7 +638,7 @@ int main(int argc, char* argv[])
     // of the server.
     // - Do this after creating app and setting up translations, so errors are
     // translated properly.
-    if (PaymentServer::ipcSendCommaPlusCoinndLine())
+    if (PaymentServer::ipcSendCommandLine())
         exit(0);
 
     // Start up the payment server early, too, so impatient users that click on

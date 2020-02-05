@@ -99,7 +99,7 @@ bool AppInit(int argc, char* argv[])
             return false;
         }
         // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
-        if (!SelectParamsFromCommaPlusCoinndLine()) {
+        if (!SelectParamsFromCommandLine()) {
             fprintf(stderr, "Error: Invalid combination of -regtest and -testnet.\n");
             return false;
         }
@@ -111,13 +111,13 @@ bool AppInit(int argc, char* argv[])
             return false;
         }
 
-        // CommaPlusCoinnd-line RPC
-        bool fCommaPlusCoinndLine = false;
+        // Command-line RPC
+        bool fCommandLine = false;
         for (int i = 1; i < argc; i++)
             if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "commapluscoin:"))
-                fCommaPlusCoinndLine = true;
+                fCommandLine = true;
 
-        if (fCommaPlusCoinndLine) {
+        if (fCommandLine) {
             fprintf(stderr, "Error: There is no RPC client functionality in commapluscoind anymore. Use the commapluscoin-cli utility instead.\n");
             exit(1);
         }

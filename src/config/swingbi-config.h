@@ -207,8 +207,8 @@
 /* Define to 1 if you have the <miniupnpc/upnperrors.h> header file. */
 /* #undef HAVE_MINIUPNPC_UPNPERRORS_H */
 
-/* Define to 1 if you have the <miniupnpc/upnpcommapluscoinnds.h> header file. */
-/* #undef HAVE_MINIUPNPC_UPNPCOMMAPLUSCOINNDS_H */
+/* Define to 1 if you have the <miniupnpc/upnpcommands.h> header file. */
+/* #undef HAVE_MINIUPNPC_UPNPCOMMANDS_H */
 
 /* Define this symbol if you have MSG_NOSIGNAL */
 #define HAVE_MSG_NOSIGNAL 1
