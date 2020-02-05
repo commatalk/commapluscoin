@@ -22,7 +22,7 @@ More information at [commaplus.jp](http://commaplus.jp)
 
 <table>
 <th>Block Height</th><th>Miner</th><th>Total Reward</td>
-<tr><td>1-200</td><td>0</td><td>2,897,600,000 CPC</td></tr>
+<tr><td>1-200</td><td>14488000</td><td>2,897,600,000 CPC</td></tr>
 </table>
 
 ### PoS Rewards Breakdown
